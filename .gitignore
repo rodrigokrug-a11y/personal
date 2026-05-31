@@ -18,3 +18,6 @@ pnpm-debug.log*
 # editor
 .vscode/
 .idea/
+
+# transient scheduled-task lock
+.claude/scheduled_tasks.lock

@@ -4,19 +4,19 @@
   "email": "rodrigokrug@gmail.com",
   "resumeUrl": "/Rodrigo-Krug-CV.pdf",
   "resumeUrlEn": "/Rodrigo-Krug-Resume-EN.pdf",
-  "portrait": "/images/portrait.svg",
-  "portraitAlt": "/images/portrait.svg",
+  "portrait": "/images/portrait.png",
+  "portraitAlt": "/images/portraitAlt.png",
   "role": {
-    "pt": "Head de Operações & Supply Chain Global",
-    "en": "Head of Operations & Global Supply Chain"
+    "pt": "Head de Operações ",
+    "en": "Head of Operations"
   },
   "location": {
     "pt": "Belo Horizonte, Brasil · Atuação global",
     "en": "Belo Horizonte, Brazil · Working globally"
   },
   "headline": {
-    "pt": "Transformo operações industriais em motores de crescimento global.",
-    "en": "I turn industrial operations into engines of global growth."
+    "pt": "Transformo operações em motores de crescimento global.",
+    "en": "I turn operations into engines of global growth."
   },
   "intro": {
     "pt": "Há mais de 20 anos escalo operações em manufatura, supply chain e estratégia — de startups que fundei a projetos para Embraer, Natura, Globo e Renault. Hoje lidero operações globais na Loot Studios.",
@@ -41,11 +41,33 @@
     }
   ],
   "stats": [
-    { "value": "20+", "label": { "pt": "anos em operações", "en": "years in operations" } },
-    { "value": "78", "label": { "pt": "países atendidos", "en": "countries served" } },
-    { "value": "5", "label": { "pt": "hubs globais", "en": "global hubs" } }
+    {
+      "value": "20+",
+      "label": {
+        "pt": "anos em operações",
+        "en": "years in operations"
+      }
+    },
+    {
+      "value": "78",
+      "label": {
+        "pt": "países atendidos",
+        "en": "countries served"
+      }
+    },
+    {
+      "value": "5",
+      "label": {
+        "pt": "hubs globais",
+        "en": "global hubs"
+      }
+    }
   ],
   "socials": [
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/rodrigo-krug", "icon": "linkedin" }
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/rodrigo-krug",
+      "icon": "linkedin"
+    }
   ]
 }
