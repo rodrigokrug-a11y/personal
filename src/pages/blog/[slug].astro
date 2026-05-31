@@ -1,0 +1,15 @@
+---
+// Página de detalhe de cada artigo (Português) — /blog/<slug>
+import ArticleDetail from "../../components/ArticleDetail.astro";
+import { articles, getArticle } from "../../data/site";
+
+export function getStaticPaths() {
+  return articles.map((a) => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params;
+const article = getArticle(slug!);
+if (!article) return Astro.redirect("/404");
+---
+
+<ArticleDetail article={article} lang="pt" />

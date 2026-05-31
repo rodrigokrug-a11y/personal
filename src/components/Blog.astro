@@ -1,0 +1,84 @@
+---
+import { articles, formatDate } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+import SectionHeading from "./SectionHeading.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Mostra os 3 artigos mais recentes na home.
+const latest = articles.slice(0, 3);
+const base = lang === "pt" ? "/blog" : "/en/blog";
+---
+
+{
+  latest.length > 0 && (
+    <section id="blog" class="relative scroll-mt-20 bg-slate-50 py-24 sm:py-28">
+      <div class="mx-auto max-w-6xl px-5">
+        <SectionHeading
+          eyebrow={t("blog.eyebrow")}
+          title={t("blog.title")}
+          subtitle={t("blog.subtitle")}
+        />
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {latest.map((article, i) => (
+            <article
+              data-reveal
+              data-reveal-delay={(i % 3) + 1}
+              class="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-500/10"
+            >
+              <div
+                class="relative aspect-[16/9] overflow-hidden"
+                style={`background-image:${article.gradient}`}
+              >
+                {article.cover && (
+                  <img
+                    src={article.cover}
+                    alt={article.title[lang]}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                )}
+                {article.featured && (
+                  <span class="absolute left-4 top-4 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-violet-700 shadow-sm backdrop-blur">
+                    ★ {t("projects.featured")}
+                  </span>
+                )}
+              </div>
+
+              <div class="flex flex-1 flex-col p-6">
+                <time class="text-xs font-medium text-slate-400">
+                  {formatDate(article.date, lang)}
+                </time>
+                <h3 class="font-display mt-1.5 text-lg font-bold tracking-tight text-slate-900">
+                  {article.title[lang]}
+                </h3>
+                <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                  {article.excerpt[lang]}
+                </p>
+                <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 transition group-hover:text-violet-600">
+                  {t("blog.readmore")}
+                  <Icon
+                    name="arrow-up-right"
+                    class="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </span>
+              </div>
+
+              <a
+                href={`${base}/${article.slug}`}
+                class="absolute inset-0 z-10"
+                aria-label={article.title[lang]}
+              />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

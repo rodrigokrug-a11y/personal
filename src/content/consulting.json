@@ -1,0 +1,36 @@
+{
+  "services": [
+    {
+      "icon": "ops",
+      "title": { "pt": "Operações & PCP", "en": "Operations & Production Planning" },
+      "description": {
+        "pt": "Estruturo sistemas de Controle de Produção (PCP) sob medida e reengenhario processos de fabricação para escalar com eficiência e reduzir custos.",
+        "en": "I build tailor-made production planning (PCP) systems and reengineer manufacturing processes to scale efficiently and cut costs."
+      }
+    },
+    {
+      "icon": "growth",
+      "title": { "pt": "Supply Chain Global", "en": "Global Supply Chain" },
+      "description": {
+        "pt": "Desenho cadeias de suprimento com fornecedores internacionais e faço a curadoria de parceiros estratégicos no Brasil e no exterior.",
+        "en": "I design supply chains with international suppliers and curate strategic partners in Brazil and abroad."
+      }
+    },
+    {
+      "icon": "product",
+      "title": { "pt": "Produto & Engenharia", "en": "Product & Engineering" },
+      "description": {
+        "pt": "Do conceito à produção em escala: desenvolvimento de produtos, design de PCBs e circuitos eletrônicos.",
+        "en": "From concept to production at scale: product development, PCB and electronic circuit design."
+      }
+    },
+    {
+      "icon": "leadership",
+      "title": { "pt": "Lean & Melhoria Contínua", "en": "Lean & Continuous Improvement" },
+      "description": {
+        "pt": "Implemento Lean, 5S, KPIs integrados e análise de causa raiz para destravar os gargalos críticos da operação.",
+        "en": "I implement Lean, 5S, integrated KPIs and root-cause analysis to unlock the operation's critical bottlenecks."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+---
+import { awards } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+import SectionHeading from "./SectionHeading.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+{
+  awards.length > 0 && (
+    <section id="premios" class="relative scroll-mt-20 py-24 sm:py-28">
+      <div class="mx-auto max-w-6xl px-5">
+        <SectionHeading
+          eyebrow={t("awards.eyebrow")}
+          title={t("awards.title")}
+          subtitle={t("awards.subtitle")}
+        />
+
+        <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {awards.map((award, i) => (
+            <li
+              data-reveal
+              data-reveal-delay={(i % 3) + 1}
+              class="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/10"
+            >
+              <span class="bg-brand inline-grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white shadow-sm">
+                <Icon name="award" class="h-5 w-5" />
+              </span>
+              <div>
+                <p class="font-display text-sm font-bold leading-snug text-slate-900">
+                  {award.title[lang]}
+                </p>
+                {award.issuer && (
+                  <p class="mt-1 text-xs text-slate-500">{award.issuer}</p>
+                )}
+                <p class="mt-1.5 text-xs font-semibold text-violet-600">{award.year}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

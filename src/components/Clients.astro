@@ -1,0 +1,48 @@
+---
+import { clients } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+{
+  clients.length > 0 && (
+    <section class="border-y border-slate-200 bg-slate-50/60 py-14">
+      <div class="mx-auto max-w-6xl px-5">
+        <p
+          data-reveal
+          class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-400"
+        >
+          {t("clients.title")}
+        </p>
+
+        <ul
+          data-reveal
+          data-reveal-delay="1"
+          class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14"
+        >
+          {clients.map((client) => (
+            <li>
+              {client.logo ? (
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  loading="lazy"
+                  class="h-8 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0"
+                />
+              ) : (
+                <span class="font-display text-xl font-bold tracking-tight text-slate-400 transition hover:text-slate-700 sm:text-2xl">
+                  {client.name}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

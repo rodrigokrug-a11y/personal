@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Tema (Tailwind v4 — configuração via CSS)
+   --------------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Gradiente da marca — mude estas 3 cores para reestilizar o site inteiro */
+  --brand-1: #6366f1; /* indigo  */
+  --brand-2: #8b5cf6; /* violet  */
+  --brand-3: #d946ef; /* fuchsia */
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.25);
+}
+
+/* ---------------------------------------------------------------------------
+   Utilitários customizados
+   --------------------------------------------------------------------------- */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Texto com preenchimento em gradiente */
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--brand-1),
+    var(--brand-2) 45%,
+    var(--brand-3)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fundo sólido com gradiente da marca */
+.bg-brand {
+  background-image: linear-gradient(
+    100deg,
+    var(--brand-1),
+    var(--brand-2) 45%,
+    var(--brand-3)
+  );
+}
+
+/* Borda em gradiente (usada nos cards/anel da foto) */
+.ring-brand {
+  background-image: linear-gradient(
+    135deg,
+    var(--brand-1),
+    var(--brand-2) 45%,
+    var(--brand-3)
+  );
+}
+
+/* Fundo "mesh" suave com manchas de cor */
+.mesh-bg {
+  background-image:
+    radial-gradient(
+      42% 42% at 18% 18%,
+      rgba(99, 102, 241, 0.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      38% 38% at 82% 8%,
+      rgba(217, 70, 239, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      45% 45% at 72% 82%,
+      rgba(56, 189, 248, 0.14),
+      transparent 70%
+    );
+}
+
+/* Vidro fosco (nav, cards) */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+}
+
+/* ---------------------------------------------------------------------------
+   Conteúdo rico das páginas de projeto (.richtext)
+   Estiliza o que sai do editor: títulos, listas, links, imagens, tabelas…
+   --------------------------------------------------------------------------- */
+.richtext {
+  color: #334155; /* slate-700 */
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.richtext > * + * {
+  margin-top: 1.25rem;
+}
+.richtext h1,
+.richtext h2,
+.richtext h3,
+.richtext h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #0f172a; /* slate-900 */
+  line-height: 1.25;
+}
+.richtext h1 {
+  font-size: 1.875rem;
+  margin-top: 2.5rem;
+}
+.richtext h2 {
+  font-size: 1.5rem;
+  margin-top: 2.25rem;
+}
+.richtext h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+}
+.richtext h4 {
+  font-size: 1.075rem;
+  margin-top: 1.75rem;
+}
+.richtext a {
+  color: #7c3aed; /* violet-600 */
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.richtext a:hover {
+  color: #6d28d9;
+}
+.richtext ul,
+.richtext ol {
+  padding-left: 1.5rem;
+}
+.richtext ul {
+  list-style: disc;
+}
+.richtext ol {
+  list-style: decimal;
+}
+.richtext li + li {
+  margin-top: 0.4rem;
+}
+.richtext blockquote {
+  border-left: 3px solid var(--brand-2);
+  padding-left: 1.1rem;
+  color: #475569;
+  font-style: italic;
+}
+.richtext code {
+  background: #f1f5f9;
+  border-radius: 0.375rem;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+.richtext pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 0.875rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+.richtext pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.richtext img {
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  height: auto;
+}
+.richtext hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+.richtext table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+.richtext th,
+.richtext td {
+  border: 1px solid #e2e8f0;
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+}
+.richtext th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #0f172a;
+}
+.richtext tr:nth-child(even) td {
+  background: #fbfcfe;
+}
+
+/* ---------------------------------------------------------------------------
+   Animação de revelação ao rolar (data-reveal)
+   --------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal][data-reveal-delay="1"] {
+  transition-delay: 0.08s;
+}
+[data-reveal][data-reveal-delay="2"] {
+  transition-delay: 0.16s;
+}
+[data-reveal][data-reveal-delay="3"] {
+  transition-delay: 0.24s;
+}
+[data-reveal][data-reveal-delay="4"] {
+  transition-delay: 0.32s;
+}
+
+/* ---------------------------------------------------------------------------
+   Animação flutuante (blobs do hero)
+   --------------------------------------------------------------------------- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.animate-float {
+  animation: float 9s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float 13s ease-in-out infinite;
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
+}

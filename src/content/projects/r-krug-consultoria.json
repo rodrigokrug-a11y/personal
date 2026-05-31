@@ -1,0 +1,30 @@
+{
+  "name": "R. Krug Consultoria",
+  "order": 2,
+  "year": "2022 — presente",
+  "featured": true,
+  "gradient": "linear-gradient(135deg,#10b981,#14b8a6 45%,#06b6d4)",
+  "image": null,
+  "tagline": {
+    "pt": "Operações industriais para empresas de tecnologia.",
+    "en": "Industrial operations for technology companies."
+  },
+  "description": {
+    "pt": "Consultoria estratégica em operações, supply chain e desenvolvimento de produtos. Atendo empresas como Tissuelabs, Digitalli Energia e Mestria, com especialização em cadeias de suprimento globais.",
+    "en": "Strategic consulting in operations, supply chain and product development. I serve companies such as Tissuelabs, Digitalli Energia and Mestria, specializing in global supply chains."
+  },
+  "role": {
+    "pt": "Fundador & Consultor Principal",
+    "en": "Founder & Principal Consultant"
+  },
+  "tags": [
+    "Consultoria",
+    "Supply Chain",
+    "PCP",
+    "Produto"
+  ],
+  "metrics": [],
+  "link": null,
+  "bodyPt": "## O que entrego\n\nConsultoria estratégica para empresas de tecnologia em desafios de operações industriais, com especialização em projetos com cadeia de fornecimento global: sistemas de PCP, reengenharia de processos, supply chain internacional e desenvolvimento de produtos do conceito à escala.\n\n## Clientes\n\nTissuelabs (bioengenharia), Digitalli Energia (soluções em energia) e Mestria (tecnologia para o setor público).",
+  "bodyEn": "## What I deliver\n\nStrategic consulting for technology companies facing industrial operations challenges, specializing in global supply chain projects: PCP systems, process reengineering, international supply chain and product development from concept to scale.\n\n## Clients\n\nTissuelabs (bioengineering), Digitalli Energia (energy solutions) and Mestria (public-sector technology)."
+}

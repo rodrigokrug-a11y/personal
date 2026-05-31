@@ -1,0 +1,60 @@
+---
+import { personal } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="sobre" class="relative scroll-mt-20 py-24 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <!-- Foto secundária -->
+      <div data-reveal class="relative mx-auto w-full max-w-md">
+        <div
+          class="absolute -inset-3 -z-10 rounded-[2rem] blur-2xl"
+          style="background-image:linear-gradient(45deg,rgba(221,214,254,0.55),rgba(245,208,254,0.45))"
+        >
+        </div>
+        <div class="overflow-hidden rounded-[1.75rem] border border-slate-200 shadow-xl">
+          <img
+            src={personal.portraitAlt}
+            alt={personal.name}
+            width="520"
+            height="520"
+            class="aspect-square w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div>
+        <SectionHeading eyebrow={t("about.eyebrow")} title={personal.aboutTitle[lang]} />
+
+        <div data-reveal data-reveal-delay="1" class="mt-6 space-y-4">
+          {
+            personal.about[lang].map((paragraph) => (
+              <p class="text-base leading-relaxed text-slate-600 sm:text-lg">{paragraph}</p>
+            ))
+          }
+        </div>
+
+        <!-- Estatísticas -->
+        <dl data-reveal data-reveal-delay="2" class="mt-10 grid grid-cols-3 gap-4">
+          {
+            personal.stats.map((stat) => (
+              <div class="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+                <dt class="font-display text-3xl font-bold text-gradient">{stat.value}</dt>
+                <dd class="mt-1 text-xs leading-snug text-slate-500">{stat.label[lang]}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

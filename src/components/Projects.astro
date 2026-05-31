@@ -1,0 +1,26 @@
+---
+import { projects } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+import SectionHeading from "./SectionHeading.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="projetos" class="relative scroll-mt-20 bg-slate-50 py-24 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading
+      eyebrow={t("projects.eyebrow")}
+      title={t("projects.title")}
+      subtitle={t("projects.subtitle")}
+    />
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project, i) => <ProjectCard project={project} lang={lang} delay={(i % 3) + 1} />)}
+    </div>
+  </div>
+</section>

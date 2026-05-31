@@ -1,0 +1,51 @@
+---
+import { personal, socials } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+import Icon from "./Icon.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = 2025; // 🔧 atualize o ano se desejar
+---
+
+<footer class="border-t border-slate-200 bg-white">
+  <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 py-10 sm:flex-row sm:justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="bg-brand grid h-8 w-8 place-items-center rounded-lg text-xs font-bold text-white">
+        {personal.initials}
+      </span>
+      <span class="text-sm text-slate-500">
+        © {year} {personal.name}. {t("footer.rights")}
+      </span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      {
+        socials.map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            class="text-slate-400 transition hover:text-violet-600"
+          >
+            <Icon name={s.icon} class="h-5 w-5" />
+          </a>
+        ))
+      }
+      <!-- Acesso discreto ao editor de conteúdo -->
+      <span class="text-slate-200">·</span>
+      <a
+        href="/keystatic"
+        class="inline-flex items-center gap-1 text-xs font-medium text-slate-300 transition hover:text-violet-600"
+        aria-label="Editar conteúdo do site"
+      >
+        <Icon name="settings" class="h-3.5 w-3.5" />
+        Admin
+      </a>
+    </div>
+  </div>
+</footer>

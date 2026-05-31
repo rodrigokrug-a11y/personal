@@ -1,0 +1,28 @@
+{
+  "name": "Biadev",
+  "order": 3,
+  "year": "🔧 ano",
+  "featured": false,
+  "gradient": "linear-gradient(135deg,#6366f1,#8b5cf6 45%,#d946ef)",
+  "image": null,
+  "tagline": {
+    "pt": "Software e produtos digitais.",
+    "en": "Software and digital products."
+  },
+  "description": {
+    "pt": "🔧 Resumo curto do Biadev (aparece no cartão). Edite em /keystatic → Projetos.",
+    "en": "🔧 Short summary of Biadev (shown on the card). Edit in /keystatic → Projects."
+  },
+  "role": {
+    "pt": "🔧 Seu papel",
+    "en": "🔧 Your role"
+  },
+  "tags": [
+    "Software",
+    "Produto"
+  ],
+  "metrics": [],
+  "link": null,
+  "bodyPt": "🔧 Conte a história do Biadev aqui: o que é, o problema que resolve, para quem, o seu papel e os resultados. Você pode adicionar imagens, tabelas e links pelo editor.",
+  "bodyEn": "🔧 Tell the Biadev story here: what it is, the problem it solves, for whom, your role and the results. You can add images, tables and links from the editor."
+}

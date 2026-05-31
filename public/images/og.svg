@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="80" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818cf8"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#e879f9"/>
+    </linearGradient>
+    <radialGradient id="blob" cx="0.85" cy="0.2" r="0.6">
+      <stop stop-color="#8b5cf6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#blob)"/>
+  <rect x="80" y="80" width="72" height="72" rx="18" fill="url(#accent)"/>
+  <text x="116" y="128" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="34" font-weight="700" fill="#0f172a">RK</text>
+  <text x="80" y="320" font-family="'Space Grotesk',sans-serif" font-size="64" font-weight="700" fill="#ffffff">Rodrigo Krug</text>
+  <text x="80" y="392" font-family="'Space Grotesk',sans-serif" font-size="38" font-weight="600" fill="url(#accent)">Head de Operações &amp; Supply Chain Global</text>
+  <text x="80" y="468" font-family="'Inter',sans-serif" font-size="28" fill="#cbd5e1">20+ anos escalando operações industriais</text>
+</svg>

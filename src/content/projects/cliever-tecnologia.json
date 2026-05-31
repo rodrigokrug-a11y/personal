@@ -1,0 +1,52 @@
+{
+  "name": "Cliever Tecnologia",
+  "order": 1,
+  "year": "2011 — 2022",
+  "featured": true,
+  "gradient": "linear-gradient(135deg,#f59e0b,#f97316 45%,#f43f5e)",
+  "image": null,
+  "tagline": {
+    "pt": "Pioneira em impressão 3D e filamentos no Brasil.",
+    "en": "A pioneer in 3D printing and filaments in Brazil."
+  },
+  "description": {
+    "pt": "Fundei e liderei por 11 anos a Cliever — premiada pela CNI como um dos 22 Casos de Inovação do Brasil. Criamos a primeira impressora 3D brasileira por estereolitografia (SL1) e filamentos próprios, exportando para 15+ países.",
+    "en": "I founded and led Cliever for 11 years — recognized by CNI as one of Brazil's 22 Innovation Cases. We built the first Brazilian SLA 3D printer (SL1) and our own filaments, exporting to 15+ countries."
+  },
+  "role": {
+    "pt": "Fundador & CEO",
+    "en": "Founder & CEO"
+  },
+  "tags": [
+    "Manufatura Aditiva",
+    "Impressão 3D",
+    "Hardware",
+    "Startup"
+  ],
+  "metrics": [
+    {
+      "value": "11 anos",
+      "label": {
+        "pt": "à frente da empresa",
+        "en": "leading the company"
+      }
+    },
+    {
+      "value": "15+",
+      "label": {
+        "pt": "países atendidos",
+        "en": "countries served"
+      }
+    },
+    {
+      "value": "50+",
+      "label": {
+        "pt": "profissionais liderados",
+        "en": "professionals led"
+      }
+    }
+  ],
+  "link": null,
+  "bodyPt": "## Sobre a Cliever\n\nFundei e liderei por 11 anos a Cliever Tecnologia, pioneira em manufatura aditiva (impressão 3D) no Brasil. Criamos a primeira impressora 3D brasileira por estereolitografia (SL1) e desenvolvemos filamentos plásticos próprios.\n\n## Principais conquistas\n\nPremiada pela CNI como um dos 22 Casos de Inovação do Brasil em 2017. Liderei mais de 50 profissionais, captei venture capital e transformei a empresa de LTDA em S/A. Exportamos para mais de 15 países, com projetos para Embraer, Natura, Globo, Intelbras e Renault.\n\n💡 Dica: edite esta página em /keystatic → Projetos. Você pode adicionar imagens, tabelas, links e mais.",
+  "bodyEn": "## About Cliever\n\nI founded and led Cliever Tecnologia for 11 years, a pioneer in additive manufacturing (3D printing) in Brazil. We built the first Brazilian SLA 3D printer (SL1) and developed our own plastic filaments.\n\n## Key achievements\n\nRecognized by CNI as one of Brazil's 22 Innovation Cases in 2017. I led 50+ professionals, raised venture capital and converted the company from LTDA to S/A. We exported to 15+ countries, with projects for Embraer, Natura, Globo, Intelbras and Renault.\n\n💡 Tip: edit this page in /keystatic → Projects. You can add images, tables, links and more."
+}

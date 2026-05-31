@@ -1,0 +1,154 @@
+{
+  "jobs": [
+    {
+      "role": { "pt": "Head de Operações | Supply Chain Global", "en": "Head of Operations | Global Supply Chain" },
+      "company": "Loot Studios",
+      "period": { "pt": "mai 2023 — Atual", "en": "May 2023 — Present" },
+      "location": { "pt": "Belo Horizonte, Brasil", "en": "Belo Horizonte, Brazil" },
+      "description": {
+        "pt": "Lidero produção, supply chain global e o time de vendas B2B, incluindo a expansão para Austin (EUA).",
+        "en": "I lead production, global supply chain and the B2B sales team, including expansion into Austin (USA)."
+      },
+      "achievements": [
+        {
+          "pt": "Operação do crowdfunding Maledictionem: 3.000+ pedidos, US$ 700k+ em faturamento e 60+ países atendidos.",
+          "en": "Ran the Maledictionem crowdfunding: 3,000+ orders, US$ 700k+ in revenue and 60+ countries served."
+        },
+        {
+          "pt": "Estruturei e coordeno 5 hubs globais de distribuição (EUA, Canadá, Reino Unido, Holanda e Brasil).",
+          "en": "Built and coordinate 5 global distribution hubs (USA, Canada, UK, Netherlands and Brazil)."
+        },
+        {
+          "pt": "Planejei e executei 10+ feiras internacionais (Gen Con, Spiel Essen, UKGE, Adepticon), com 120k+ visitantes.",
+          "en": "Planned and ran 10+ international trade shows (Gen Con, Spiel Essen, UKGE, Adepticon), reaching 120k+ visitors."
+        },
+        {
+          "pt": "Redesenhei a supply chain global e implementei Lean, melhoria contínua e KPIs integrados.",
+          "en": "Redesigned the global supply chain and implemented Lean, continuous improvement and integrated KPIs."
+        }
+      ]
+    },
+    {
+      "role": { "pt": "Fundador & Consultor Principal", "en": "Founder & Principal Consultant" },
+      "company": "R. Krug Consultoria",
+      "period": { "pt": "jun 2022 — Atual", "en": "Jun 2022 — Present" },
+      "location": { "pt": "Belo Horizonte, Brasil", "en": "Belo Horizonte, Brazil" },
+      "description": {
+        "pt": "Consultoria estratégica em operações industriais para empresas de tecnologia, com especialização em cadeias de suprimento globais.",
+        "en": "Strategic consulting in industrial operations for technology companies, specializing in global supply chains."
+      },
+      "achievements": [
+        {
+          "pt": "Clientes como Tissuelabs (bioengenharia), Digitalli Energia e Mestria.",
+          "en": "Clients such as Tissuelabs (bioengineering), Digitalli Energia and Mestria."
+        },
+        {
+          "pt": "Entrego sistemas de PCP, reengenharia de processos, supply chain e desenvolvimento de produtos.",
+          "en": "I deliver production planning (PCP), process reengineering, supply chain and product development."
+        }
+      ]
+    },
+    {
+      "role": { "pt": "Fundador & CEO", "en": "Founder & CEO" },
+      "company": "Cliever Tecnologia",
+      "period": { "pt": "jun 2011 — set 2022", "en": "Jun 2011 — Sep 2022" },
+      "location": { "pt": "Belo Horizonte, Brasil", "en": "Belo Horizonte, Brazil" },
+      "description": {
+        "pt": "Fundei e liderei por 11 anos uma das pioneiras em manufatura aditiva (impressão 3D) do Brasil.",
+        "en": "I founded and led for 11 years one of Brazil's pioneers in additive manufacturing (3D printing)."
+      },
+      "achievements": [
+        {
+          "pt": "Premiada pela CNI como um dos 22 Casos de Inovação do Brasil (2017).",
+          "en": "Recognized by CNI as one of Brazil's 22 Innovation Cases (2017)."
+        },
+        {
+          "pt": "Liderei 50+ profissionais, captei venture capital e converti a empresa de LTDA para S/A.",
+          "en": "Led 50+ professionals, raised venture capital and converted the company from LTDA to S/A."
+        },
+        {
+          "pt": "Exportei para 15+ países nos 5 continentes; projetos para Embraer, Natura, Globo, Intelbras e Renault.",
+          "en": "Exported to 15+ countries across 5 continents; projects for Embraer, Natura, Globo, Intelbras and Renault."
+        },
+        {
+          "pt": "Criei a Cliever SL1 — primeira impressora 3D brasileira por estereolitografia — e filamentos próprios.",
+          "en": "Built the Cliever SL1 — the first Brazilian SLA 3D printer — and our own filaments."
+        }
+      ]
+    },
+    {
+      "role": { "pt": "Técnico II — Automação Industrial & Robótica", "en": "Technician II — Industrial Automation & Robotics" },
+      "company": "PUCRS",
+      "period": { "pt": "2008 — 2012", "en": "2008 — 2012" },
+      "location": { "pt": "Porto Alegre, Brasil", "en": "Porto Alegre, Brazil" },
+      "description": {
+        "pt": "Projetos de automação industrial e robótica durante a graduação, construindo a base técnica em manufatura e operações.",
+        "en": "Industrial automation and robotics projects during my degree, building my technical foundation in manufacturing and operations."
+      },
+      "achievements": []
+    },
+    {
+      "role": { "pt": "Gerente de Projetos — Operações", "en": "Project Manager — Operations" },
+      "company": "FlowerKork (Portugal)",
+      "period": { "pt": "2005 — 2006", "en": "2005 — 2006" },
+      "location": { "pt": "Portugal", "en": "Portugal" },
+      "description": {
+        "pt": "Primeira experiência internacional, gerenciando projetos industriais e interface com equipes e fornecedores na Europa.",
+        "en": "First international experience, managing industrial projects and interfacing with teams and suppliers across Europe."
+      },
+      "achievements": []
+    }
+  ],
+  "education": [
+    {
+      "degree": { "pt": "Engenharia da Computação", "en": "Computer Engineering" },
+      "institution": "Universidade FUMEC",
+      "period": "2020 — 2023"
+    },
+    {
+      "degree": { "pt": "Engenharia de Controle e Automação", "en": "Control & Automation Engineering" },
+      "institution": "PUCRS",
+      "period": "2006 — 2013"
+    },
+    {
+      "degree": { "pt": "Técnico em Mecatrônica", "en": "Technical Degree in Mechatronics" },
+      "institution": "SENAI-RS",
+      "period": "2004 — 2006"
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": { "pt": "Operações & Supply Chain", "en": "Operations & Supply Chain" },
+      "items": [
+        { "pt": "Gestão de operações", "en": "Operations management" },
+        { "pt": "Supply chain global", "en": "Global supply chain" },
+        { "pt": "Logística multi-hub", "en": "Multi-hub logistics" },
+        { "pt": "Planejamento de produção (PCP)", "en": "Production planning (PCP)" },
+        { "pt": "Lean & melhoria contínua", "en": "Lean & continuous improvement" },
+        { "pt": "Redução de custos & KPIs", "en": "Cost reduction & KPIs" }
+      ]
+    },
+    {
+      "title": { "pt": "Manufatura & Produto", "en": "Manufacturing & Product" },
+      "items": [
+        { "pt": "Manufatura aditiva", "en": "Additive manufacturing" },
+        { "pt": "Impressão 3D", "en": "3D printing" },
+        { "pt": "Desenvolvimento de produto", "en": "Product development" },
+        { "pt": "CAD & design de PCB", "en": "CAD & PCB design" },
+        { "pt": "Automação industrial", "en": "Industrial automation" },
+        { "pt": "Análise de causa raiz", "en": "Root cause analysis" }
+      ]
+    },
+    {
+      "title": { "pt": "Liderança & Negócio", "en": "Leadership & Business" },
+      "items": [
+        { "pt": "Liderança de times", "en": "Team leadership" },
+        { "pt": "Planejamento estratégico", "en": "Strategic planning" },
+        { "pt": "Expansão internacional", "en": "International expansion" },
+        { "pt": "Vendas B2B", "en": "B2B sales" },
+        { "pt": "Venture capital", "en": "Venture capital" },
+        { "pt": "Feiras internacionais", "en": "International trade shows" }
+      ]
+    }
+  ]
+}

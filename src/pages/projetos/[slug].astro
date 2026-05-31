@@ -1,0 +1,15 @@
+---
+// Página de detalhe de cada projeto (Português) — /projetos/<slug>
+import ProjectDetail from "../../components/ProjectDetail.astro";
+import { projects, getProject } from "../../data/site";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = getProject(slug!);
+if (!project) return Astro.redirect("/404");
+---
+
+<ProjectDetail project={project} lang="pt" />

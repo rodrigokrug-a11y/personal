@@ -1,0 +1,20 @@
+{
+  "title": "Como estruturar operações que escalam globalmente",
+  "titleEn": "How to structure operations that scale globally",
+  "date": "2026-05-20",
+  "draft": false,
+  "featured": true,
+  "gradient": "linear-gradient(135deg,#0ea5e9,#3b82f6 45%,#6366f1)",
+  "cover": null,
+  "excerpt": {
+    "pt": "Cinco lições práticas de 20 anos escalando manufatura e supply chain — de uma fábrica no Brasil a 5 hubs de distribuição no mundo.",
+    "en": "Five practical lessons from 20 years scaling manufacturing and supply chain — from a single factory in Brazil to 5 distribution hubs worldwide."
+  },
+  "tags": [
+    "Operações",
+    "Supply Chain",
+    "Escala"
+  ],
+  "bodyPt": "Escalar uma operação não é fazer mais do mesmo — é redesenhar como o trabalho flui. Reuni aqui as lições que mais usei na prática, de uma fábrica no Brasil a uma operação com 5 hubs globais.\n\n## 1. Processo antes de ferramenta\n\nAutomatizar um processo ruim só faz o erro acontecer mais rápido. Mapeie o fluxo, elimine o desperdício e só então escolha a tecnologia.\n\n## 2. Indicadores que o time entende\n\nUm KPI só vale se a pessoa que o influencia consegue lê-lo e agir. Prefira poucos números claros a um painel que ninguém abre.\n\n💡 Este é um artigo de exemplo. Edite ou crie novos em /keystatic → Blog / Artigos — com títulos, listas, imagens, tabelas e links.",
+  "bodyEn": "Scaling an operation isn't doing more of the same — it's redesigning how work flows. Here are the lessons I've used most, from a single factory in Brazil to an operation with 5 global hubs.\n\n## 1. Process before tooling\n\nAutomating a bad process just makes the mistake happen faster. Map the flow, remove the waste, and only then pick the technology.\n\n## 2. Metrics the team understands\n\nA KPI is only worth it if the person who influences it can read it and act. Prefer a few clear numbers over a dashboard no one opens.\n\n💡 This is a sample article. Edit it or create new ones in /keystatic → Blog / Articles — with headings, lists, images, tables and links."
+}

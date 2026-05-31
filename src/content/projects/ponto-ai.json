@@ -1,0 +1,28 @@
+{
+  "name": "ponto.ai",
+  "order": 4,
+  "year": "🔧 ano",
+  "featured": false,
+  "gradient": "linear-gradient(135deg,#0ea5e9,#3b82f6 45%,#6366f1)",
+  "image": null,
+  "tagline": {
+    "pt": "Inteligência artificial aplicada.",
+    "en": "Applied artificial intelligence."
+  },
+  "description": {
+    "pt": "🔧 Resumo curto do ponto.ai (aparece no cartão). Edite em /keystatic → Projetos.",
+    "en": "🔧 Short summary of ponto.ai (shown on the card). Edit in /keystatic → Projects."
+  },
+  "role": {
+    "pt": "🔧 Seu papel",
+    "en": "🔧 Your role"
+  },
+  "tags": [
+    "IA",
+    "Produto"
+  ],
+  "metrics": [],
+  "link": "https://ponto.ai",
+  "bodyPt": "🔧 Conte a história do ponto.ai aqui: a proposta de valor com IA, o público, o seu papel e o impacto. Você pode adicionar imagens, tabelas e links pelo editor.",
+  "bodyEn": "🔧 Tell the ponto.ai story here: the AI value proposition, the audience, your role and the impact. You can add images, tables and links from the editor."
+}

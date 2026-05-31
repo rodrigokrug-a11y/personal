@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "title": {
+        "pt": "22 Casos de Inovação do Brasil",
+        "en": "Brazil's 22 Innovation Cases"
+      },
+      "issuer": "CNI — Confederação Nacional da Indústria",
+      "year": "2017"
+    },
+    {
+      "title": {
+        "pt": "Destaque em Ciência e Tecnologia",
+        "en": "Science & Technology Highlight"
+      },
+      "issuer": "",
+      "year": "2017"
+    },
+    {
+      "title": {
+        "pt": "Prêmio INFO Start — Categoria 16 Bits",
+        "en": "INFO Start Award — 16 Bits Category"
+      },
+      "issuer": "Revista INFO",
+      "year": "2012"
+    },
+    {
+      "title": {
+        "pt": "Prêmio Destaque Inovação em Engenharia",
+        "en": "Engineering Innovation Highlight Award"
+      },
+      "issuer": "",
+      "year": "2012"
+    },
+    {
+      "title": {
+        "pt": "Prêmio Lançamentos FIMEC",
+        "en": "FIMEC Launch Award"
+      },
+      "issuer": "FIMEC",
+      "year": "2012"
+    }
+  ]
+}

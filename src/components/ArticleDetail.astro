@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "./Footer.astro";
+import Icon from "./Icon.astro";
+import { personal, formatDate, type Article } from "../data/site";
+import { renderMarkdown } from "../lib/markdown";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  article: Article;
+  lang: Lang;
+}
+const { article, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const homeHref = lang === "pt" ? "/" : "/en/";
+const blogHref = `${homeHref}#blog`;
+const altHref =
+  lang === "pt" ? `/en/blog/${article.slug}` : `/blog/${article.slug}`;
+
+const title = `${article.title[lang]} — ${personal.name}`;
+const description = article.excerpt[lang];
+---
+
+<Layout lang={lang} title={title} description={description}>
+  <header class="glass sticky top-0 z-50 border-b border-slate-200/60">
+    <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3.5">
+      <a href={homeHref} class="flex items-center gap-2.5">
+        <span class="bg-brand grid h-9 w-9 place-items-center rounded-xl text-sm font-bold text-white shadow-sm">
+          {personal.initials}
+        </span>
+        <span class="font-display font-bold tracking-tight">{personal.name}</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a
+          href={altHref}
+          class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-violet-300 hover:text-violet-600"
+        >
+          {t("lang.switch")}
+        </a>
+        <a
+          href={blogHref}
+          class="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 transition hover:text-violet-600"
+        >
+          <Icon name="arrow-up-right" class="h-4 w-4 rotate-[225deg]" />
+          {t("blog.back")}
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-5 pb-24">
+    <!-- Cabeçalho do artigo -->
+    <div class="mt-10">
+      <time class="text-sm font-medium text-violet-600">
+        {formatDate(article.date, lang)}
+      </time>
+      <h1 class="font-display mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+        {article.title[lang]}
+      </h1>
+      <p class="mt-4 text-lg text-slate-600">{article.excerpt[lang]}</p>
+    </div>
+
+    <!-- Capa -->
+    <div
+      class="relative mt-8 aspect-[16/7] overflow-hidden rounded-3xl"
+      style={`background-image:${article.gradient}`}
+    >
+      {
+        article.cover && (
+          <img
+            src={article.cover}
+            alt={article.title[lang]}
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        )
+      }
+    </div>
+
+    <!-- Conteúdo rico (Markdown → títulos, listas, imagens, tabelas, links) -->
+    <article class="richtext mt-12" set:html={renderMarkdown(article.body[lang])} />
+
+    <!-- Tags -->
+    {
+      article.tags.length > 0 && (
+        <div class="mt-10 flex flex-wrap items-center gap-2">
+          {article.tags.map((tag) => (
+            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-600">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+
+    <!-- Voltar -->
+    <div class="mt-14 border-t border-slate-200 pt-8">
+      <a
+        href={blogHref}
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 transition hover:text-violet-600"
+      >
+        <Icon name="arrow-up-right" class="h-4 w-4 rotate-[225deg]" />
+        {t("blog.back")}
+      </a>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

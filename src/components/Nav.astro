@@ -1,0 +1,135 @@
+---
+import { personal } from "../data/site";
+import { useTranslations, type Lang } from "../i18n/ui";
+import LangToggle from "./LangToggle.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { href: "#sobre", label: t("nav.about") },
+  { href: "#projetos", label: t("nav.projects") },
+  { href: "#experiencia", label: t("nav.experience") },
+  { href: "#premios", label: t("nav.awards") },
+  { href: "#blog", label: t("nav.blog") },
+  { href: "#consultoria", label: t("nav.consulting") },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50">
+  <div class="mx-auto max-w-6xl px-3">
+    <nav
+      class="glass relative mt-3 flex items-center justify-between gap-4 rounded-2xl border border-white/60 px-4 py-3 shadow-sm shadow-slate-900/5 sm:px-5"
+    >
+      <!-- Logo -->
+      <a href="#top" class="flex items-center gap-2.5">
+        <span
+          class="bg-brand grid h-9 w-9 place-items-center rounded-xl text-sm font-bold text-white shadow-sm"
+          >{personal.initials}</span
+        >
+        <span class="font-display hidden text-sm font-semibold tracking-tight text-slate-900 sm:block"
+          >{personal.name}</span
+        >
+      </a>
+
+      <!-- Links (desktop) -->
+      <ul class="hidden items-center gap-1 md:flex">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-900/5 hover:text-slate-900"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Ações -->
+      <div class="flex items-center gap-2">
+        <LangToggle lang={lang} />
+        <a
+          href="#contato"
+          class="bg-brand hidden rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 sm:inline-flex"
+        >
+          {t("nav.cta")}
+        </a>
+        <!-- Botão do menu mobile -->
+        <button
+          type="button"
+          id="menu-toggle"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white/70 text-slate-700 transition hover:bg-white md:hidden"
+        >
+          <Icon name="menu" class="menu-icon h-5 w-5" />
+          <Icon name="close" class="close-icon hidden h-5 w-5" />
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menu mobile (dropdown) -->
+    <div
+      id="mobile-menu"
+      class="glass mt-2 hidden rounded-2xl border border-white/60 p-3 shadow-lg shadow-slate-900/5 md:hidden"
+    >
+      <ul class="flex flex-col gap-1">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                data-menu-link
+                class="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-900/5"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="sm:hidden">
+          <a
+            href="#contato"
+            data-menu-link
+            class="bg-brand mt-1 block rounded-xl px-4 py-3 text-center text-sm font-semibold text-white"
+          >
+            {t("nav.cta")}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const menuIcon = toggle?.querySelector(".menu-icon");
+  const closeIcon = toggle?.querySelector(".close-icon");
+
+  function setOpen(open: boolean) {
+    if (!toggle || !menu) return;
+    menu.classList.toggle("hidden", !open);
+    menuIcon?.classList.toggle("hidden", open);
+    closeIcon?.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    setOpen(!isOpen);
+  });
+
+  // Fecha ao clicar em um link
+  menu?.querySelectorAll("[data-menu-link]").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+</script>
