@@ -1,0 +1,139 @@
+---
+export const prerender = false;
+import Layout from "../layouts/Layout.astro";
+import { personal } from "../data/site";
+
+// Se o site foi buildado em modo estático (sem servidor), esta página não tem
+// backend — avisa em vez de quebrar.
+const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PASSWORD;
+---
+
+<Layout lang="pt" title="Importar conteúdo" description="Painel de importação">
+  <main class="mx-auto max-w-2xl px-5 py-12">
+    <div class="mb-8 flex items-center gap-2.5">
+      <span class="bg-brand grid h-9 w-9 place-items-center rounded-xl text-sm font-bold text-white shadow-sm">
+        {personal.initials}
+      </span>
+      <h1 class="font-display text-2xl font-bold tracking-tight text-slate-900">
+        Importar conteúdo
+      </h1>
+    </div>
+
+    <p class="mb-6 text-sm leading-relaxed text-slate-600">
+      Cole o JSON gerado pelo prompt (artigo ou projeto) e clique em importar.
+      O conteúdo é salvo e o site se atualiza sozinho em 1–2 minutos.
+    </p>
+
+    <form id="form" class="space-y-5">
+      <!-- Senha -->
+      <div>
+        <label class="mb-1.5 block text-sm font-semibold text-slate-700">Senha</label>
+        <input
+          type="password"
+          id="password"
+          autocomplete="current-password"
+          required
+          class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-100"
+          placeholder="Sua senha de admin"
+        />
+      </div>
+
+      <!-- Tipo -->
+      <div>
+        <label class="mb-1.5 block text-sm font-semibold text-slate-700">Tipo</label>
+        <div class="flex gap-2">
+          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:text-violet-700">
+            <input type="radio" name="kind" value="auto" checked class="accent-violet-600" /> Detectar
+          </label>
+          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:text-violet-700">
+            <input type="radio" name="kind" value="blog" class="accent-violet-600" /> Artigo
+          </label>
+          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:text-violet-700">
+            <input type="radio" name="kind" value="projeto" class="accent-violet-600" /> Projeto
+          </label>
+        </div>
+      </div>
+
+      <!-- JSON -->
+      <div>
+        <label class="mb-1.5 block text-sm font-semibold text-slate-700">Conteúdo (JSON)</label>
+        <textarea
+          id="content"
+          required
+          rows="14"
+          spellcheck="false"
+          class="w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-xs leading-relaxed focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-100"
+          placeholder={'{\n  "name": "...",\n  "tagline": { "pt": "...", "en": "..." },\n  ...\n}'}></textarea>
+      </div>
+
+      <label class="flex items-center gap-2 text-sm text-slate-600">
+        <input type="checkbox" id="overwrite" class="accent-violet-600" />
+        Substituir se já existir um com o mesmo endereço
+      </label>
+
+      <button
+        type="submit"
+        id="submit"
+        class="bg-brand inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50"
+      >
+        Importar
+      </button>
+    </form>
+
+    <!-- Resultado -->
+    <div id="result" class="mt-6 hidden rounded-xl border p-4 text-sm"></div>
+  </main>
+</Layout>
+
+<script>
+  const form = document.getElementById("form") as HTMLFormElement;
+  const result = document.getElementById("result") as HTMLDivElement;
+  const submit = document.getElementById("submit") as HTMLButtonElement;
+
+  function show(kind: "ok" | "err", html: string) {
+    result.className =
+      "mt-6 rounded-xl border p-4 text-sm " +
+      (kind === "ok"
+        ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+        : "border-rose-200 bg-rose-50 text-rose-800");
+    result.innerHTML = html;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const password = (document.getElementById("password") as HTMLInputElement).value;
+    const content = (document.getElementById("content") as HTMLTextAreaElement).value;
+    const overwrite = (document.getElementById("overwrite") as HTMLInputElement).checked;
+    const kindSel = (document.querySelector('input[name="kind"]:checked') as HTMLInputElement).value;
+    const kind = kindSel === "auto" ? undefined : kindSel;
+
+    submit.disabled = true;
+    submit.textContent = "Importando…";
+    result.className = "mt-6 hidden";
+
+    try {
+      const res = await fetch("/api/importar", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ password, content, kind, overwrite }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        show(
+          "ok",
+          `✅ <strong>${data.updated ? "Atualizado" : "Publicado"}</strong>: ${data.kind} <code>${data.slug}</code>.<br>O site se atualiza em 1–2 min. Verá em: <a class="underline" href="${data.url}" target="_blank">${data.url}</a>`,
+        );
+        if (!data.updated) (document.getElementById("content") as HTMLTextAreaElement).value = "";
+      } else if (data.conflict) {
+        show("err", `⚠️ ${data.error}<br>Marque a caixa "Substituir" e tente de novo.`);
+      } else {
+        show("err", `❌ ${data.error || "Erro ao importar."}`);
+      }
+    } catch (err) {
+      show("err", "❌ Erro de conexão. Tente novamente.");
+    } finally {
+      submit.disabled = false;
+      submit.textContent = "Importar";
+    }
+  });
+</script>

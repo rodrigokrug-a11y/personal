@@ -10,19 +10,21 @@ import node from "@astrojs/node";
  *  MODOS DE EXECUÇÃO
  *  --------------------------------------------------------------------------
  *  • dev (npm run dev):
- *      Site + editor /keystatic local (storage local, sem login).
- *  • estático (npm run build):
- *      Site 100% estático em dist/ — publicável em qualquer host.
- *      Use quando NÃO quiser o admin pela web.
- *  • servidor (SERVER=1 npm run build):
- *      Site + editor /keystatic pela WEB (storage GitHub + login).
- *      Gera um servidor Node (dist/server) para rodar no VPS.
+ *      Site + editor /keystatic local + página /importar.
+ *  • servidor (npm run build) — PADRÃO:
+ *      Gera um servidor Node (dist/server) para o VPS. Habilita o editor
+ *      /keystatic pela web E a página /importar. As páginas de conteúdo
+ *      continuam pré-renderizadas (prerender), então o site segue rápido.
+ *  (O site agora sempre roda como servidor Node no VPS — necessário para
+ *   /importar e o editor. As páginas de conteúdo são pré-renderizadas, então
+ *   continuam rápidas como estáticas.)
  * ============================================================================
  */
 const isDev = process.argv.includes("dev");
-const isServer = process.env.SERVER === "1";
+const isStatic = process.env.STATIC === "1";
+const isServer = !isStatic; // servidor é o padrão (build do VPS)
 
-// O Keystatic roda em desenvolvimento (local) e no modo servidor (web).
+// O Keystatic roda em desenvolvimento e no modo servidor.
 const enableKeystatic = isDev || isServer;
 
 // https://astro.build/config
@@ -30,8 +32,7 @@ export default defineConfig({
   // Domínio final do site (usado em URLs absolutas, sitemap, Open Graph).
   site: "https://rodrigokrug.com.br",
 
-  // No modo servidor, renderiza sob demanda (necessário para o admin web).
-  // Nos demais, continua estático.
+  // Servidor por padrão (permite /importar e admin web). STATIC=1 → estático.
   output: isServer ? "server" : "static",
   ...(isServer ? { adapter: node({ mode: "standalone" }) } : {}),
 
