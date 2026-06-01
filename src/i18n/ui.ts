@@ -86,6 +86,9 @@ export const ui = {
     "form.placeholder.name": "Seu nome",
     "form.placeholder.email": "voce@empresa.com",
     "form.placeholder.message": "Como posso ajudar?",
+    "form.sending": "Enviando…",
+    "form.success": "Mensagem enviada! Respondo em breve. Obrigado.",
+    "form.error": "Não consegui enviar agora. Tente de novo ou me chame no e-mail.",
 
     "footer.rights": "Todos os direitos reservados.",
     "footer.built": "Feito com Astro.",
@@ -165,6 +168,9 @@ export const ui = {
     "form.placeholder.name": "Your name",
     "form.placeholder.email": "you@company.com",
     "form.placeholder.message": "How can I help?",
+    "form.sending": "Sending…",
+    "form.success": "Message sent! I'll reply soon. Thank you.",
+    "form.error": "Couldn't send right now. Try again or reach me by email.",
 
     "footer.rights": "All rights reserved.",
     "footer.built": "Built with Astro.",

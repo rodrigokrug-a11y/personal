@@ -10,13 +10,9 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// 🔧 TODO: crie um formulário grátis em https://formspree.io e cole o ID aqui.
-// Enquanto estiver "SEU_ID", o formulário cai no seu e-mail via mailto.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/SEU_ID";
-const formConfigured = !FORMSPREE_ENDPOINT.includes("SEU_ID");
-const formAction = formConfigured
-  ? FORMSPREE_ENDPOINT
-  : `mailto:${personal.email}`;
+// O formulário envia automaticamente pelo servidor (/api/contato → Resend),
+// sem abrir o app de e-mail do visitante. O fallback de "action" só importa
+// se o JavaScript estiver desativado.
 ---
 
 <section id="contato" class="relative scroll-mt-20 py-24 sm:py-28">
@@ -71,13 +67,23 @@ const formAction = formConfigured
 
       <!-- Formulário -->
       <form
+        id="contact-form"
         data-reveal
         data-reveal-delay="2"
-        action={formAction}
+        action="/api/contato"
         method="POST"
         class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
       >
         <div class="grid gap-4">
+          <!-- Honeypot anti-spam (escondido; humanos não preenchem) -->
+          <input
+            type="text"
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            class="absolute left-[-9999px] h-0 w-0 opacity-0"
+            aria-hidden="true"
+          />
           <label class="block">
             <span class="text-sm font-semibold text-slate-700">{t("form.name")}</span>
             <input
@@ -110,13 +116,77 @@ const formAction = formConfigured
           </label>
           <button
             type="submit"
-            class="bg-brand mt-1 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition hover:opacity-90"
+            class="bg-brand mt-1 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition hover:opacity-90 disabled:opacity-60"
           >
-            {t("form.send")}
+            <span data-label>{t("form.send")}</span>
             <Icon name="arrow" class="h-4 w-4" />
           </button>
+
+          <!-- Feedback (sucesso/erro) -->
+          <p
+            id="contact-status"
+            role="status"
+            class="hidden rounded-xl px-4 py-3 text-sm"
+            data-sending={t("form.sending")}
+            data-success={t("form.success")}
+            data-error={t("form.error")}
+            data-sendlabel={t("form.send")}
+          >
+          </p>
         </div>
       </form>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    const status = document.getElementById("contact-status");
+    if (form && status) {
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const label = form.querySelector("[data-label]") as HTMLElement;
+      const msg = {
+        sending: status.dataset.sending || "Sending…",
+        success: status.dataset.success || "Sent!",
+        error: status.dataset.error || "Error.",
+        send: status.dataset.sendlabel || "Send",
+      };
+      const setStatus = (kind: "sending" | "success" | "error") => {
+        status.className =
+          "rounded-xl px-4 py-3 text-sm " +
+          (kind === "success"
+            ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+            : kind === "error"
+              ? "bg-rose-50 text-rose-800 border border-rose-200"
+              : "bg-slate-50 text-slate-600 border border-slate-200");
+        status.textContent = msg[kind];
+      };
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        label.textContent = msg.sending;
+        setStatus("sending");
+        try {
+          const data = Object.fromEntries(new FormData(form).entries());
+          const res = await fetch("/api/contato", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const out = await res.json().catch(() => ({ ok: false }));
+          if (res.ok && out.ok) {
+            setStatus("success");
+            form.reset();
+          } else {
+            setStatus("error");
+          }
+        } catch {
+          setStatus("error");
+        } finally {
+          btn.disabled = false;
+          label.textContent = msg.send;
+        }
+      });
+    }
+  </script>
 </section>
