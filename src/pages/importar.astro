@@ -122,7 +122,10 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
       if (data.ok) {
         show(
           "ok",
-          `✅ <strong>${data.updated ? "Atualizado" : "Publicado"}</strong>: ${data.kind} <code>${data.slug}</code>.<br>O site está sendo reconstruído (~1 min). Depois veja em: <a class="underline" href="${data.url}" target="_blank">${data.url}</a>`,
+          `✅ <strong>${data.updated ? "Atualizado" : "Publicado"}</strong>: ${data.kind} <code>${data.slug}</code>.` +
+            `<br><br>⏳ <strong>Aguarde cerca de 1 minuto</strong> enquanto o site é reconstruído. ` +
+            `Se abrir o link antes disso, pode aparecer "404" — é normal, é só esperar e recarregar.` +
+            `<br><br>Link: <a class="underline" href="${data.url}" target="_blank">${data.url}</a>`,
         );
         if (!data.updated) (document.getElementById("content") as HTMLTextAreaElement).value = "";
       } else if (data.conflict) {
