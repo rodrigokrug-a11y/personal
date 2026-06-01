@@ -21,7 +21,8 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
 
     <p class="mb-6 text-sm leading-relaxed text-slate-600">
       Cole o JSON gerado pelo prompt (artigo ou projeto) e clique em importar.
-      O conteúdo é salvo e o site se atualiza sozinho em 1–2 minutos.
+      O conteúdo é salvo no servidor e o site se reconstrói sozinho em ~1 minuto.
+      <a href="/admin" class="text-violet-600 underline">Voltar ao admin</a>.
     </p>
 
     <form id="form" class="space-y-5">
@@ -121,7 +122,7 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
       if (data.ok) {
         show(
           "ok",
-          `✅ <strong>${data.updated ? "Atualizado" : "Publicado"}</strong>: ${data.kind} <code>${data.slug}</code>.<br>O site se atualiza em 1–2 min. Verá em: <a class="underline" href="${data.url}" target="_blank">${data.url}</a>`,
+          `✅ <strong>${data.updated ? "Atualizado" : "Publicado"}</strong>: ${data.kind} <code>${data.slug}</code>.<br>O site está sendo reconstruído (~1 min). Depois veja em: <a class="underline" href="${data.url}" target="_blank">${data.url}</a>`,
         );
         if (!data.updated) (document.getElementById("content") as HTMLTextAreaElement).value = "";
       } else if (data.conflict) {

@@ -1,0 +1,59 @@
+---
+export const prerender = false;
+import Layout from "../layouts/Layout.astro";
+import { personal } from "../data/site";
+import Icon from "../components/Icon.astro";
+---
+
+<Layout lang="pt" title="Admin" description="Painel de administração">
+  <main class="mx-auto max-w-xl px-5 py-16">
+    <div class="mb-2 flex items-center gap-2.5">
+      <span class="bg-brand grid h-10 w-10 place-items-center rounded-xl text-sm font-bold text-white shadow-sm">
+        {personal.initials}
+      </span>
+      <h1 class="font-display text-2xl font-bold tracking-tight text-slate-900">
+        Painel de administração
+      </h1>
+    </div>
+    <p class="mb-8 text-sm text-slate-500">
+      Gerencie o conteúdo do site. Escolha uma das opções abaixo.
+    </p>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <!-- Editor visual -->
+      <a
+        href="/keystatic"
+        class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10"
+      >
+        <span class="bg-brand mb-4 grid h-11 w-11 place-items-center rounded-xl text-white shadow-sm">
+          <Icon name="settings" class="h-5 w-5" />
+        </span>
+        <span class="font-display text-lg font-bold text-slate-900">Editor visual</span>
+        <span class="mt-1 text-sm leading-relaxed text-slate-500">
+          Edite textos, projetos, currículo e prêmios em formulários, com PT e EN
+          lado a lado.
+        </span>
+      </a>
+
+      <!-- Importar -->
+      <a
+        href="/importar"
+        class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10"
+      >
+        <span class="bg-brand mb-4 grid h-11 w-11 place-items-center rounded-xl text-white shadow-sm">
+          <Icon name="upload" class="h-5 w-5" />
+        </span>
+        <span class="font-display text-lg font-bold text-slate-900">Importar conteúdo</span>
+        <span class="mt-1 text-sm leading-relaxed text-slate-500">
+          Cole o JSON gerado pelo prompt (artigo ou projeto) e publique de
+          qualquer lugar.
+        </span>
+      </a>
+    </div>
+
+    <a href="/" class="mt-10 inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 transition hover:text-violet-600">
+      <Icon name="arrow-up-right" class="h-4 w-4 rotate-[225deg]" />
+      Voltar ao site
+    </a>
+  </main>
+</Layout>

@@ -1,0 +1,53 @@
+{
+  "name": "Melhor Filamento",
+  "order": 5,
+  "year": "2026",
+  "featured": false,
+  "gradient": "linear-gradient(135deg,#10b981,#14b8a6 45%,#06b6d4)",
+  "image": null,
+  "tagline": {
+    "pt": "O melhor preço em filamento e resina 3D — já com o frete pro seu CEP.",
+    "en": "The best price on 3D filament and resin — shipping to your door included."
+  },
+  "description": {
+    "pt": "Comparador brasileiro de filamentos e resinas para impressão 3D que ranqueia as ofertas pelo custo total (preço + frete) para o CEP de cada pessoa, com mapa de lojas próximas e histórico de preços.",
+    "en": "A Brazilian price-comparison platform for 3D-printing filaments and resins that ranks offers by total cost (price + shipping) for each shopper's postal code, with a nearby-store map and price history."
+  },
+  "role": {
+    "pt": "Idealização, produto e desenvolvimento",
+    "en": "Concept, product & development"
+  },
+  "tags": [
+    "Comparador de preços",
+    "Impressão 3D",
+    "Marketplace",
+    "Geração de leads",
+    "Produto digital"
+  ],
+  "metrics": [
+    {
+      "value": "Preço + frete",
+      "label": {
+        "pt": "Custo total, não só o preço",
+        "en": "Total cost, not just the price"
+      }
+    },
+    {
+      "value": "Por CEP",
+      "label": {
+        "pt": "Melhor oferta para a sua região",
+        "en": "Best deal for your region"
+      }
+    },
+    {
+      "value": "Mapa",
+      "label": {
+        "pt": "Lojas para retirar perto de você",
+        "en": "Nearby stores for pickup"
+      }
+    }
+  ],
+  "link": "https://melhorfilamento.com.br",
+  "bodyPt": "## O problema\n\nQuem imprime em 3D no Brasil — de hobbistas a pequenos negócios — compra filamento e resina o tempo todo. O problema é que os preços mudam toda hora e estão espalhados por dezenas de lojas, e o **frete varia muito de uma região para outra**. Resultado: a oferta \"mais barata\" muitas vezes sai cara depois do frete até a sua casa, e a pessoa perde tempo abrindo loja por loja sem nunca ter certeza de onde está o melhor custo de verdade.\n\n## A solução\n\nO Melhor Filamento reúne as ofertas de várias lojas em um só lugar e monta um ranking pelo **custo total — o preço somado ao frete estimado para o CEP de quem está comprando**. Em segundos, a pessoa vê onde vai pagar menos no total, compara marcas, cores e tipos de material e ainda acompanha o **histórico de preços** de cada produto para saber se é a hora certa de comprar. Quem prefere retirar pessoalmente encontra as **lojas mais próximas em um mapa**. Tudo em português, pensado para o celular, com uma experiência limpa e rápida.\n\n## A inovação\n\nO diferencial não é \"listar preços\" — é comparar o **custo real até a sua porta**. A maioria dos comparadores ignora o frete, que no Brasil pesa muito, ou trata o país inteiro como se fosse um lugar só. Aqui a recomendação muda conforme a região de quem busca: a melhor oferta para alguém em São Paulo pode ser outra para alguém no Nordeste. Some a isso a transparência do histórico de preços e a opção de retirar perto de casa, e o resultado é uma decisão de compra mais inteligente — em um nicho, a impressão 3D, que os grandes comparadores não atendem bem.\n\n## O resultado\n\nUm produto **no ar e funcionando** em [melhorfilamento.com.br](https://melhorfilamento.com.br), com domínio próprio e pronto para crescer: catálogo de produtos reais, comparação por região, mapa de lojas e histórico de preços. Para as lojas, é um canal de **clientes qualificados**; para o consumidor, é economia de tempo e de dinheiro com a confiança de estar pagando o melhor custo total. Uma base sólida para se tornar a referência de preços de impressão 3D no Brasil.",
+  "bodyEn": "## The problem\n\nAnyone who 3D-prints in Brazil — from hobbyists to small businesses — buys filament and resin constantly. The trouble is that prices change all the time and are spread across dozens of shops, and **shipping costs vary widely from one region to another**. As a result, the \"cheapest\" offer often turns out expensive once delivery to your door is added, and people waste time hopping from store to store without ever knowing where the real best deal is.\n\n## The solution\n\nMelhor Filamento brings offers from many stores into one place and ranks them by **total cost — the price plus the estimated shipping to the shopper's postal code**. In seconds, people see where they'll pay the least overall, compare brands, colors and material types, and follow each product's **price history** to know when it's the right time to buy. Those who prefer to pick up in person find the **nearest stores on a map**. It's all in Portuguese, built for mobile, with a clean and fast experience.\n\n## The innovation\n\nThe edge isn't \"listing prices\" — it's comparing the **real cost to your doorstep**. Most comparison sites ignore shipping, which weighs heavily in Brazil, or treat the entire country as a single place. Here the recommendation changes with the shopper's region: the best deal for someone in São Paulo can be a different one for someone in the Northeast. Add transparent price history and a nearby-pickup option, and you get a smarter buying decision — in a niche, 3D printing, that the big comparison sites serve poorly.\n\n## The outcome\n\nA product that's **live and working** at [melhorfilamento.com.br](https://melhorfilamento.com.br), with its own domain and ready to scale: a catalog of real products, region-aware comparison, a store map and price history. For shops, it's a channel of **qualified customers**; for shoppers, it's saved time and money with the confidence of paying the best total cost. A solid foundation to become the go-to price reference for 3D printing in Brazil."
+}

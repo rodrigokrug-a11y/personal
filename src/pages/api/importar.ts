@@ -1,15 +1,17 @@
 import type { APIRoute } from "astro";
 import { validateImport, type ContentKind } from "../../lib/import-content";
+import { writeFile, mkdir, access } from "node:fs/promises";
+import { dirname, join, resolve } from "node:path";
+import { exec } from "node:child_process";
 
 export const prerender = false;
 
 /**
- * Recebe o JSON colado na página /importar, valida, e grava o arquivo no
- * repositório do GitHub (via API). O GitHub dispara o webhook que reconstrói
- * o site no VPS — então o conteúdo aparece sozinho em ~1-2 min.
+ * Recebe o JSON colado em /importar, valida e GRAVA o arquivo direto no
+ * servidor (src/content/...). Em seguida dispara um rebuild do site.
+ * Simples: sem token do GitHub, sem API externa.
  *
- * Protegido por senha (IMPORT_PASSWORD) — definida só no .env do VPS.
- * Requer: GITHUB_TOKEN, GITHUB_REPO ("owner/name"), IMPORT_PASSWORD.
+ * Protegido por senha (IMPORT_PASSWORD no .env do VPS).
  */
 const json = (status: number, body: unknown) =>
   new Response(JSON.stringify(body), {
@@ -17,16 +19,21 @@ const json = (status: number, body: unknown) =>
     headers: { "content-type": "application/json" },
   });
 
+async function exists(p: string): Promise<boolean> {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export const POST: APIRoute = async ({ request }) => {
-  // No servidor Node (runtime), os segredos vêm de process.env — não de
-  // import.meta.env (que só conhece variáveis em build-time).
   const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env ?? {};
   const PASSWORD = env.IMPORT_PASSWORD;
-  const TOKEN = env.GITHUB_TOKEN;
-  const REPO = env.GITHUB_REPO || "rodrigokrug-a11y/personal";
 
-  if (!PASSWORD || !TOKEN) {
-    return json(503, { ok: false, error: "Importação ainda não configurada no servidor (faltam IMPORT_PASSWORD / GITHUB_TOKEN no .env)." });
+  if (!PASSWORD) {
+    return json(503, { ok: false, error: "Importação ainda não configurada no servidor (falta IMPORT_PASSWORD no .env)." });
   }
 
   let payload: { password?: string; content?: string; kind?: ContentKind; overwrite?: boolean };
@@ -41,32 +48,22 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const result = validateImport(payload.content || "", payload.kind);
-  if (!result.ok) {
+  if (!result.ok || !result.path || !result.data) {
     return json(422, result);
   }
 
-  const fileContent = JSON.stringify(result.data, null, 2) + "\n";
-  const apiBase = `https://api.github.com/repos/${REPO}/contents/${result.path}`;
-  const ghHeaders = {
-    authorization: `Bearer ${TOKEN}`,
-    accept: "application/vnd.github+json",
-    "user-agent": "rodrigokrug-importer",
-    "x-github-api-version": "2022-11-28",
-  };
+  // Raiz do projeto = cwd do processo (no VPS, /var/www/rodrigokrug).
+  const root = env.CONTENT_ROOT || process.cwd();
+  const filePath = resolve(root, result.path);
 
-  // Existe? (precisamos do sha para sobrescrever)
-  let existingSha: string | undefined;
-  try {
-    const head = await fetch(apiBase, { headers: ghHeaders });
-    if (head.ok) {
-      const j = await head.json();
-      existingSha = j.sha;
-    }
-  } catch {
-    /* segue como criação */
+  // Segurança: garante que o caminho fica dentro de src/content (sem ../).
+  const contentDir = resolve(root, "src/content");
+  if (!filePath.startsWith(contentDir)) {
+    return json(400, { ok: false, error: "Caminho inválido." });
   }
 
-  if (existingSha && !payload.overwrite) {
+  const already = await exists(filePath);
+  if (already && !payload.overwrite) {
     return json(409, {
       ok: false,
       conflict: true,
@@ -76,31 +73,25 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  // Encode UTF-8 → base64 (conteúdo tem acentos/emoji)
-  const b64 = btoa(unescape(encodeURIComponent(fileContent)));
-  const commitMsg = `${existingSha ? "Update" : "Add"} ${result.kind} via importer: ${result.slug}`;
-
-  const put = await fetch(apiBase, {
-    method: "PUT",
-    headers: { ...ghHeaders, "content-type": "application/json" },
-    body: JSON.stringify({
-      message: commitMsg,
-      content: b64,
-      ...(existingSha ? { sha: existingSha } : {}),
-    }),
-  });
-
-  if (!put.ok) {
-    const txt = await put.text();
-    return json(502, { ok: false, error: `Falha ao salvar no GitHub (${put.status}). ${txt.slice(0, 200)}` });
+  // Grava o arquivo.
+  try {
+    await mkdir(dirname(filePath), { recursive: true });
+    await writeFile(filePath, JSON.stringify(result.data, null, 2) + "\n", "utf8");
+  } catch (e) {
+    return json(500, { ok: false, error: "Não consegui gravar o arquivo no servidor: " + (e as Error).message });
   }
+
+  // Dispara o rebuild em background (não bloqueia a resposta).
+  // O script faz: build + restart do pm2. Definido em REBUILD_CMD ou padrão.
+  const rebuildCmd = env.REBUILD_CMD || `bash ${join(root, "rebuild-after-import.sh")}`;
+  exec(rebuildCmd, { cwd: root }, () => {});
 
   return json(200, {
     ok: true,
     kind: result.kind,
     slug: result.slug,
     path: result.path,
-    updated: !!existingSha,
+    updated: already,
     url: result.kind === "blog" ? `/blog/${result.slug}` : `/projetos/${result.slug}`,
   });
 };
