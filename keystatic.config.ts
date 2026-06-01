@@ -59,7 +59,7 @@ const useGitHub = !!import.meta.env?.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
 export default config({
   storage: useGitHub
-    ? { kind: "github", repo: { owner: "rodrigokrug-a11y", name: "site-pessoal" } }
+    ? { kind: "github", repo: { owner: "rodrigokrug-a11y", name: "personal" } }
     : { kind: "local" },
   ui: {
     brand: { name: "Rodrigo Krug" },
