@@ -58,14 +58,29 @@ Importante:
 ## 📂 PROMPT 2 — Estudo de caso do projeto (portfólio)
 
 ```
-Escreva um ESTUDO DE CASO deste projeto para o portfólio do Rodrigo Krug
-(rodrigokrug.com.br). PRIMEIRO analise este repositório (README, package.json,
-estrutura, principais features) para entender o que ele faz de verdade. Se
-faltar algo essencial (público, números/resultados), me pergunte antes de
-inventar — NÃO invente métricas.
+Escreva um ESTUDO DE CASO COMERCIAL deste projeto para o portfólio do Rodrigo
+Krug (rodrigokrug.com.br). PRIMEIRO analise este repositório para ENTENDER o que
+o produto faz — mas o texto final é para CLIENTES e EMPRESAS, não para
+desenvolvedores.
 
-Objetivo: página que impressione empresas — problema, solução, meu papel e
-resultados. Tom experiente, primeira pessoa. BILÍNGUE (PT e EN).
+REGRA DE OURO — foque no VALOR, não na engenharia:
+- Explique QUE PROBLEMA REAL o produto resolve, PARA QUEM, e POR QUE é inovador.
+- Fale do impacto e do diferencial de negócio (rapidez, economia, alcance,
+  experiência do usuário), não de COMO foi construído.
+- NÃO use jargão técnico no corpo: nada de nomes de bibliotecas, frameworks,
+  protocolos, arquitetura, APIs ou stack (ex.: evite "WebAssembly", "Cloudflare
+  Worker", "webhook", "boolean mesh"). Se um detalhe técnico for mesmo um
+  diferencial, traduza para benefício ("processa direto no navegador" → "rápido
+  e privado, sem enviar seus arquivos").
+- Linguagem clara, confiante e acessível — um diretor de operações explicando o
+  produto para um cliente, não um README.
+
+Estrutura do corpo (use estes títulos): ## O problema · ## A solução ·
+## A inovação · ## O resultado. (EN: ## The problem · ## The solution ·
+## The innovation · ## The outcome.)
+
+BILÍNGUE (PT e EN, tradução natural). Se faltar algo essencial (público,
+números), me pergunte antes de inventar — NÃO invente métricas.
 
 Gere SOMENTE um JSON válido (sem ``` e sem comentários) neste formato exato,
 para eu salvar em src/content/projects/<slug>.json:
@@ -77,22 +92,23 @@ para eu salvar em src/content/projects/<slug>.json:
   "featured": false,
   "gradient": "linear-gradient(135deg,#6366f1,#8b5cf6 45%,#d946ef)",
   "image": null,
-  "tagline": { "pt": "<frase curta>", "en": "<short tagline>" },
-  "description": { "pt": "<resumo p/ o cartão>", "en": "<summary>" },
+  "tagline": { "pt": "<frase curta de impacto>", "en": "<short punchy tagline>" },
+  "description": { "pt": "<resumo comercial p/ o cartão>", "en": "<summary>" },
   "role": { "pt": "<seu papel>", "en": "<your role>" },
-  "tags": ["<3 a 5 tecnologias/áreas>"],
+  "tags": ["<3 a 5 áreas/benefícios — ex.: SaaS, Produto, Inovação>"],
   "metrics": [
-    { "value": "<número>", "label": { "pt": "<legenda>", "en": "<label>" } }
+    { "value": "<número ou destaque>", "label": { "pt": "<legenda>", "en": "<label>" } }
   ],
   "link": "<URL pública ou null>",
-  "bodyPt": "## O desafio\n\n...\n\n## A solução\n\n...\n\n## Resultados\n\n...",
-  "bodyEn": "## The challenge\n\n...\n\n## The solution\n\n...\n\n## Results\n\n..."
+  "bodyPt": "## O problema\n\n...\n\n## A solução\n\n...\n\n## A inovação\n\n...\n\n## O resultado\n\n...",
+  "bodyEn": "## The problem\n\n...\n\n## The solution\n\n...\n\n## The innovation\n\n...\n\n## The outcome\n\n..."
 }
 
 Importante:
 - bodyPt e bodyEn são STRINGS de Markdown (## títulos, - listas, **negrito**,
   [link](url)). Use \n para quebras de linha. NÃO use arrays/objetos.
-- Se não houver resultados reais, deixe "metrics": [] (não invente).
+- As métricas podem ser destaques, não só números (ex.: "Segundos", "3 idiomas").
+  Se não houver nada honesto a mostrar, deixe "metrics": [] (não invente).
 - "order" controla a posição (menor = primeiro). "gradient" = uma das 5 cores.
 ```
 
