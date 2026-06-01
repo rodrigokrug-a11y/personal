@@ -14,6 +14,9 @@ echo $$ > "$LOCK"
 
 {
   echo "[$(date -u +%FT%TZ)] rebuild iniciado…"
+  # Apaga o dist antigo para não deixar páginas de conteúdo já removido
+  # (projetos/artigos apagados continuariam servidos sem isto).
+  rm -rf dist
   SERVER=1 npm run build
   pm2 restart personal --update-env
   echo "[$(date -u +%FT%TZ)] rebuild concluído."
