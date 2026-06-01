@@ -74,11 +74,37 @@ A propagação leva de minutos a algumas horas. Confira com:
 
 ## Fase 5 — HTTPS (após o DNS propagar)
 
+⚠️ Só rode quando `dig +short rodrigokrug.com.br` retornar **2.24.208.73**
+(e não os IPs do WordPress.com). Se o DNS ainda estiver caindo no WordPress,
+o certbot falha na validação — espere a propagação terminar.
+
 ```bash
-certbot --nginx -d rodrigokrug.com.br -d www.rodrigokrug.com.br
+certbot --nginx -d rodrigokrug.com.br -d www.rodrigokrug.com.br \
+  --non-interactive --agree-tos -m rodrigokrug@gmail.com
 ```
 
 O certbot configura o SSL e o redirecionamento HTTP→HTTPS automaticamente.
+
+## Fase 6 — Domínio .com (redireciona para o .com.br)
+
+1. **DNS na UOL** (domínio rodrigokrug.com): crie registros **A**
+   `@` → `2.24.208.73` e `www` → `2.24.208.73`.
+2. **nginx**: instale a config de redirect:
+
+   ```bash
+   cp nginx/rodrigokrug.com.conf /etc/nginx/sites-available/rodrigokrug.com
+   ln -s /etc/nginx/sites-available/rodrigokrug.com /etc/nginx/sites-enabled/
+   nginx -t && systemctl reload nginx
+   ```
+
+3. **HTTPS do .com** (após o DNS do .com propagar):
+
+   ```bash
+   certbot --nginx -d rodrigokrug.com -d www.rodrigokrug.com \
+     --non-interactive --agree-tos -m rodrigokrug@gmail.com
+   ```
+
+Resultado: `rodrigokrug.com` (http/https) → `https://rodrigokrug.com.br`.
 
 ---
 
