@@ -52,8 +52,15 @@ const GRADIENTS = [
   { label: "Rosa → Violeta", value: "linear-gradient(135deg,#ec4899,#a855f7 45%,#6366f1)" },
 ] as const;
 
+// Em produção (VPS) usamos o GitHub como storage — é assim que o editor
+// salva o conteúdo pela web e exige login. Localmente continua "local"
+// (sem login, salvando direto nos arquivos).
+const useGitHub = !!import.meta.env?.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
+
 export default config({
-  storage: { kind: "local" },
+  storage: useGitHub
+    ? { kind: "github", repo: { owner: "rodrigokrug-a11y", name: "site-pessoal" } }
+    : { kind: "local" },
   ui: {
     brand: { name: "Rodrigo Krug" },
     navigation: {

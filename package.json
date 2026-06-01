@@ -12,6 +12,7 @@
     "cv": "node scripts/generate-cv.mjs"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.5",
     "@astrojs/react": "^4.3.0",
     "@keystatic/astro": "^5.0.0",
     "@keystatic/core": "^0.5.50",

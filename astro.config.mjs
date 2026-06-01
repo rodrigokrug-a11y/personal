@@ -3,16 +3,37 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import keystatic from "@keystatic/astro";
+import node from "@astrojs/node";
 
-// O editor de conteúdo (Keystatic) é carregado APENAS em desenvolvimento.
-// Assim o `npm run build` continua 100% estático e publicável em qualquer host.
-// Quando quiser editar pela web, veja as instruções no README.
-const enableKeystatic = process.argv.includes("dev");
+/**
+ * ============================================================================
+ *  MODOS DE EXECUÇÃO
+ *  --------------------------------------------------------------------------
+ *  • dev (npm run dev):
+ *      Site + editor /keystatic local (storage local, sem login).
+ *  • estático (npm run build):
+ *      Site 100% estático em dist/ — publicável em qualquer host.
+ *      Use quando NÃO quiser o admin pela web.
+ *  • servidor (SERVER=1 npm run build):
+ *      Site + editor /keystatic pela WEB (storage GitHub + login).
+ *      Gera um servidor Node (dist/server) para rodar no VPS.
+ * ============================================================================
+ */
+const isDev = process.argv.includes("dev");
+const isServer = process.env.SERVER === "1";
+
+// O Keystatic roda em desenvolvimento (local) e no modo servidor (web).
+const enableKeystatic = isDev || isServer;
 
 // https://astro.build/config
 export default defineConfig({
-  // 🔧 Troque para o domínio final quando publicar (ex.: "https://rodrigokrug.com")
-  site: "https://exemplo.com",
+  // Domínio final do site (usado em URLs absolutas, sitemap, Open Graph).
+  site: "https://rodrigokrug.com.br",
+
+  // No modo servidor, renderiza sob demanda (necessário para o admin web).
+  // Nos demais, continua estático.
+  output: isServer ? "server" : "static",
+  ...(isServer ? { adapter: node({ mode: "standalone" }) } : {}),
 
   // Site bilíngue: Português é o padrão (na raiz "/"), Inglês fica em "/en".
   i18n: {
@@ -28,10 +49,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
 
-    // O painel /keystatic (especialmente o editor de texto rico) puxa muitas
-    // dependências pesadas. Sem isso, o Vite as descobre sob demanda e
-    // re-otimiza no meio do carregamento, causando "504 Outdated Optimize Dep"
-    // e deixando o admin em branco. Pré-empacotar resolve de forma estável.
+    // Pré-empacota as dependências pesadas do editor para evitar o
+    // "504 Outdated Optimize Dep" que deixava o /keystatic em branco.
     optimizeDeps: {
       include: [
         "@keystatic/core",
