@@ -114,6 +114,71 @@ Importante:
 
 ---
 
+## 📋 PROMPT 3 — Projeto descrito por mim (não-digital / sem código)
+
+```
+Você vai escrever um ESTUDO DE CASO COMERCIAL de um projeto MEU para o
+portfólio do Rodrigo Krug (rodrigokrug.com.br) — engenheiro, Head de Operações
+& Supply Chain Global, 20+ anos em manufatura, operações e consultoria. Este
+projeto NÃO tem código/repositório: eu vou te descrever. O texto é para
+CLIENTES e EMPRESAS.
+
+Preencha o que souber no formulário abaixo (deixe em branco o que não souber).
+Se eu deixar pontos importantes vazios, ME FAÇA PERGUNTAS antes de escrever —
+não invente fatos nem métricas.
+
+--- COMECE A PREENCHER ---
+Nome do projeto:
+O que é (1-2 frases):
+Que problema resolve:
+Para quem (cliente/público):
+Meu papel:
+O que foi feito / como atuei:
+Resultados (números, prazos, conquistas — só os reais):
+Ano ou período:
+Link público (se houver):
+--- FIM ---
+
+Regras de escrita:
+- Foque no VALOR e no impacto de negócio, não em detalhes técnicos.
+- Tom experiente, confiante, em primeira pessoa. Linguagem clara e acessível.
+- BILÍNGUE (Português e Inglês, tradução natural).
+- Estrutura do corpo: ## O problema · ## A solução · ## A inovação ·
+  ## O resultado. (EN: ## The problem · ## The solution · ## The innovation ·
+  ## The outcome.) Se eu não tiver "resultados", troque essa seção por
+  "## Meu papel" / "## My role".
+
+Gere SOMENTE um JSON válido (sem ``` e sem comentários) neste formato exato,
+para eu salvar em src/content/projects/<slug>.json:
+
+{
+  "name": "<nome do projeto>",
+  "order": 5,
+  "year": "<ano ou período>",
+  "featured": false,
+  "gradient": "linear-gradient(135deg,#f59e0b,#f97316 45%,#f43f5e)",
+  "image": null,
+  "tagline": { "pt": "<frase curta de impacto>", "en": "<short punchy tagline>" },
+  "description": { "pt": "<resumo comercial p/ o cartão>", "en": "<summary>" },
+  "role": { "pt": "<seu papel>", "en": "<your role>" },
+  "tags": ["<3 a 5 áreas — ex.: Operações, Manufatura, Consultoria>"],
+  "metrics": [
+    { "value": "<número ou destaque>", "label": { "pt": "<legenda>", "en": "<label>" } }
+  ],
+  "link": "<URL pública ou null>",
+  "bodyPt": "## O problema\n\n...\n\n## A solução\n\n...\n\n## A inovação\n\n...\n\n## O resultado\n\n...",
+  "bodyEn": "## The problem\n\n...\n\n## The solution\n\n...\n\n## The innovation\n\n...\n\n## The outcome\n\n..."
+}
+
+Importante:
+- bodyPt e bodyEn são STRINGS de Markdown (## títulos, - listas, **negrito**,
+  [link](url)). Use \n para quebras de linha. NÃO use arrays/objetos.
+- Se não houver métricas reais, deixe "metrics": [] (não invente números).
+- "order" controla a posição (menor = primeiro). "gradient" = uma das 5 cores.
+```
+
+---
+
 ## Como publicar depois de gerar
 
 1. Salve o JSON na pasta certa (`blog/` ou `projects/`).

@@ -19,20 +19,31 @@ try {
   blocks = [];
 }
 
-const prompts = [
+// Metadados de cada card. Casa com a ordem dos blocos em PROMPT-ARTIGO.md.
+const meta = [
   {
     titulo: "Artigo de blog",
     desc: "Gera um artigo de autoridade (insights) para o blog.",
     icon: "upload" as const,
-    texto: blocks[0] || "",
   },
   {
-    titulo: "Estudo de caso (projeto)",
-    desc: "Analisa um projeto seu e escreve a página comercial dele.",
+    titulo: "Estudo de caso (projeto com código)",
+    desc: "A IA analisa um projeto digital seu e escreve a página comercial.",
     icon: "product" as const,
-    texto: blocks[1] || "",
+  },
+  {
+    titulo: "Projeto descrito por você",
+    desc: "Para projetos sem código: você descreve, a IA monta a estrutura.",
+    icon: "ops" as const,
   },
 ];
+
+const prompts = blocks.map((texto, i) => ({
+  titulo: meta[i]?.titulo || `Prompt ${i + 1}`,
+  desc: meta[i]?.desc || "",
+  icon: meta[i]?.icon || ("product" as const),
+  texto,
+}));
 ---
 
 <Layout lang="pt" title="Prompts" description="Prompts para gerar conteúdo">
