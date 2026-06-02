@@ -19,7 +19,7 @@ import Icon from "../components/Icon.astro";
       Gerencie o conteúdo do site. Escolha uma das opções abaixo.
     </p>
 
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <!-- Editor visual -->
       <a
         href="/keystatic"
@@ -47,6 +47,21 @@ import Icon from "../components/Icon.astro";
         <span class="mt-1 text-sm leading-relaxed text-slate-500">
           Cole o JSON gerado pelo prompt (artigo ou projeto) e publique de
           qualquer lugar.
+        </span>
+      </a>
+
+      <!-- Prompts -->
+      <a
+        href="/admin/prompts"
+        class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-500/10"
+      >
+        <span class="bg-brand mb-4 grid h-11 w-11 place-items-center rounded-xl text-white shadow-sm">
+          <Icon name="product" class="h-5 w-5" />
+        </span>
+        <span class="font-display text-lg font-bold text-slate-900">Prompts</span>
+        <span class="mt-1 text-sm leading-relaxed text-slate-500">
+          Copie o prompt para gerar artigos ou estudos de caso de projetos com
+          o Claude.
         </span>
       </a>
     </div>
