@@ -1,20 +1,68 @@
 ---
 import "../styles/global.css";
-import { personal } from "../data/site";
+import { personal, socials } from "../data/site";
 import type { Lang } from "../i18n/ui";
 
 interface Props {
   lang: Lang;
   title: string;
   description: string;
+  /** Imagem para compartilhamento (caminho absoluto começando com /). */
+  image?: string;
+  /** "website" (padrão) ou "article" para posts/projetos. */
+  ogType?: "website" | "article";
+  /** true em páginas privadas (admin, importar) — fora do Google. */
+  noindex?: boolean;
+  /** Caminho da mesma página no outro idioma, para hreflang. */
+  altPath?: string;
 }
 
-const { lang, title, description } = Astro.props;
-const ogImage = new URL("/images/og.svg", Astro.site ?? "https://exemplo.com").href;
+const {
+  lang,
+  title,
+  description,
+  image,
+  ogType = "website",
+  noindex = false,
+  altPath,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://rodrigokrug.com.br");
+// URL canônica = a própria página (sem query), no domínio oficial.
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL(image ?? "/images/og.png", siteUrl).href;
+const isPt = lang === "pt";
+
+// JSON-LD: descreve o Rodrigo como pessoa/profissional para o Google.
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personal.name,
+  jobTitle: isPt ? "Diretor de Operações & Supply Chain" : "Director of Operations & Supply Chain",
+  description: personal.intro[lang],
+  url: siteUrl.href,
+  image: ogImage,
+  email: `mailto:${personal.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Belo Horizonte",
+    addressRegion: "MG",
+    addressCountry: "BR",
+  },
+  knowsAbout: [
+    "Operações",
+    "Supply Chain",
+    "Manufatura",
+    "Gestão de Operações",
+    "Consultoria",
+    "Engenharia",
+  ],
+  sameAs: socials.map((s) => s.href).filter(Boolean),
+};
 ---
 
 <!doctype html>
-<html lang={lang === "pt" ? "pt-BR" : "en"}>
+<html lang={isPt ? "pt-BR" : "en"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,14 +72,47 @@ const ogImage = new URL("/images/og.svg", Astro.site ?? "https://exemplo.com").h
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={personal.name} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- URL canônica -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Idiomas alternativos (hreflang) -->
+    {
+      altPath && (
+        <>
+          <link
+            rel="alternate"
+            hreflang={isPt ? "en" : "pt-BR"}
+            href={new URL(altPath, siteUrl).href}
+          />
+          <link rel="alternate" hreflang="x-default" href={siteUrl.href} />
+        </>
+      )
+    }
 
     <!-- Open Graph / redes sociais -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={lang === "pt" ? "pt_BR" : "en_US"} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={personal.name} />
+    <meta property="og:locale" content={isPt ? "pt_BR" : "en_US"} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Dados estruturados (somente em páginas indexáveis) -->
+    {
+      !noindex && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(personLd)}
+        />
+      )
+    }
 
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

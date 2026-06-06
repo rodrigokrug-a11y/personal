@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import keystatic from "@keystatic/astro";
 import node from "@astrojs/node";
+import sitemap from "@astrojs/sitemap";
 
 /**
  * ============================================================================
@@ -45,7 +46,20 @@ export default defineConfig({
     },
   },
 
-  integrations: [react(), ...(enableKeystatic ? [keystatic()] : [])],
+  integrations: [
+    react(),
+    // Gera /sitemap-index.xml automaticamente. Exclui páginas privadas
+    // (admin, importar) e a API — não devem aparecer no Google.
+    sitemap({
+      filter: (page) =>
+        !/\/(admin|importar|keystatic|api)(\/|$)/.test(page),
+      i18n: {
+        defaultLocale: "pt",
+        locales: { pt: "pt-BR", en: "en" },
+      },
+    }),
+    ...(enableKeystatic ? [keystatic()] : []),
+  ],
 
   vite: {
     plugins: [tailwindcss()],

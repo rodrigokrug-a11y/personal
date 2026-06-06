@@ -22,7 +22,14 @@ const title = `${article.title[lang]} — ${personal.name}`;
 const description = article.excerpt[lang];
 ---
 
-<Layout lang={lang} title={title} description={description}>
+<Layout
+  lang={lang}
+  title={title}
+  description={description}
+  image={article.cover}
+  ogType="article"
+  altPath={altHref}
+>
   <header class="glass sticky top-0 z-50 border-b border-slate-200/60">
     <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3.5">
       <a href={homeHref} class="flex items-center gap-2.5">

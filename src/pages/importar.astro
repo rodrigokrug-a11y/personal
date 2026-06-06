@@ -8,7 +8,7 @@ import { personal } from "../data/site";
 const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PASSWORD;
 ---
 
-<Layout lang="pt" title="Importar conteúdo" description="Painel de importação">
+<Layout lang="pt" title="Importar conteúdo" description="Painel de importação" noindex={true}>
   <main class="mx-auto max-w-2xl px-5 py-12">
     <div class="mb-8 flex items-center gap-2.5">
       <span class="bg-brand grid h-9 w-9 place-items-center rounded-xl text-sm font-bold text-white shadow-sm">

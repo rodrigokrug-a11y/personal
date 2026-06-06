@@ -23,7 +23,14 @@ const title = `${project.name} — ${personal.name}`;
 const description = project.description[lang];
 ---
 
-<Layout lang={lang} title={title} description={description}>
+<Layout
+  lang={lang}
+  title={title}
+  description={description}
+  image={project.image}
+  ogType="article"
+  altPath={altHref}
+>
   <!-- Cabeçalho simples (volta para a home) -->
   <header class="glass sticky top-0 z-50 border-b border-slate-200/60">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3.5">

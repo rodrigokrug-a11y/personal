@@ -19,11 +19,16 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-const title = `${personal.name} — ${personal.role[lang]}`;
+// Título otimizado para SEO (palavras-chave que clientes buscam).
+const title =
+  lang === "pt"
+    ? `${personal.name} — Engenheiro e Diretor de Operações`
+    : `${personal.name} — Engineer & Director of Operations`;
 const description = personal.intro[lang];
+const altPath = lang === "pt" ? "/en/" : "/";
 ---
 
-<Layout lang={lang} title={title} description={description}>
+<Layout lang={lang} title={title} description={description} altPath={altPath}>
   <Nav lang={lang} />
   <main>
     <Hero lang={lang} />

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Páginas privadas — fora dos buscadores
+Disallow: /admin
+Disallow: /importar
+Disallow: /keystatic
+Disallow: /api/
+
+Sitemap: https://rodrigokrug.com.br/sitemap-index.xml
