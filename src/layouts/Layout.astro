@@ -49,14 +49,23 @@ const personLd = {
     addressRegion: "MG",
     addressCountry: "BR",
   },
-  knowsAbout: [
-    "Operações",
-    "Supply Chain",
-    "Manufatura",
-    "Gestão de Operações",
-    "Consultoria",
-    "Engenharia",
-  ],
+  knowsAbout: isPt
+    ? [
+        "Operações",
+        "Supply Chain",
+        "Manufatura",
+        "Gestão de Operações",
+        "Consultoria",
+        "Engenharia",
+      ]
+    : [
+        "Operations",
+        "Supply Chain",
+        "Manufacturing",
+        "Operations Management",
+        "Consulting",
+        "Engineering",
+      ],
   sameAs: socials.map((s) => s.href).filter(Boolean),
 };
 ---
