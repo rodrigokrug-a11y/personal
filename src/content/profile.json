@@ -7,8 +7,12 @@
   "portrait": "/images/portrait.png",
   "portraitAlt": "/images/portraitAlt.png",
   "role": {
-    "pt": "Head de Operações ",
+    "pt": "Head de Operações",
     "en": "Head of Operations"
+  },
+  "metaDescription": {
+    "pt": "Engenheiro e Head de Operações com 20+ anos escalando manufatura, supply chain e estratégia global. Projetos para Embraer, Natura, Globo e Renault.",
+    "en": "Engineer and Head of Operations with 20+ years scaling manufacturing, supply chain and global strategy. Projects for Embraer, Natura, Globo and Renault."
   },
   "location": {
     "pt": "Belo Horizonte, Brasil · Atuação global",

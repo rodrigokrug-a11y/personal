@@ -15,6 +15,8 @@ interface Props {
   noindex?: boolean;
   /** Caminho da mesma página no outro idioma, para hreflang. */
   altPath?: string;
+  /** JSON-LD extra (ex.: BreadcrumbList, CreativeWork) por página. */
+  jsonLd?: object | object[];
 }
 
 const {
@@ -25,24 +27,39 @@ const {
   ogType = "website",
   noindex = false,
   altPath,
+  jsonLd,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://rodrigokrug.com.br");
 // URL canônica = a própria página (sem query), no domínio oficial.
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = new URL(image ?? "/images/og.png", siteUrl).href;
+const usingDefaultOg = !image; // og.png padrão tem dimensões conhecidas (1200x630)
 const isPt = lang === "pt";
+
+// --- hreflang: cluster recíproco e auto-referencial ---------------------------
+// Normaliza para barra final (igual ao canonical) e calcula as duas versões.
+const withSlash = (p: string) => (p.endsWith("/") ? p : p + "/");
+const altUrl = altPath ? new URL(withSlash(altPath), siteUrl).href : undefined;
+// URL desta página em PT (padrão) e em EN, derivadas de canonical + altPath.
+const ptUrl = isPt ? canonical : altUrl;
+const enUrl = isPt ? altUrl : canonical;
+
+// Lista de blocos JSON-LD extras (BreadcrumbList, CreativeWork…).
+const extraLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 // JSON-LD: descreve o Rodrigo como pessoa/profissional para o Google.
 const personLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: personal.name,
-  jobTitle: isPt ? "Diretor de Operações & Supply Chain" : "Director of Operations & Supply Chain",
+  // Mesma string exibida no site (Hero) — fonte única, sem divergência.
+  jobTitle: personal.role[lang].trim(),
   description: personal.intro[lang],
-  url: siteUrl.href,
+  url: canonical,
   image: ogImage,
   email: `mailto:${personal.email}`,
+  worksFor: { "@type": "Organization", name: "Loot Studios" },
   address: {
     "@type": "PostalAddress",
     addressLocality: "Belo Horizonte",
@@ -99,16 +116,14 @@ const personLd = {
     <!-- URL canônica -->
     <link rel="canonical" href={canonical} />
 
-    <!-- Idiomas alternativos (hreflang) -->
+    <!-- Idiomas alternativos (hreflang): cluster recíproco, auto-referencial,
+         x-default = versão PT (idioma padrão) DESTA página. -->
     {
-      altPath && (
+      altPath && ptUrl && enUrl && (
         <>
-          <link
-            rel="alternate"
-            hreflang={isPt ? "en" : "pt-BR"}
-            href={new URL(altPath, siteUrl).href}
-          />
-          <link rel="alternate" hreflang="x-default" href={siteUrl.href} />
+          <link rel="alternate" hreflang="pt-BR" href={ptUrl} />
+          <link rel="alternate" hreflang="en" href={enUrl} />
+          <link rel="alternate" hreflang="x-default" href={ptUrl} />
         </>
       )
     }
@@ -118,6 +133,15 @@ const personLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={title} />
+    {
+      usingDefaultOg && (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+        </>
+      )
+    }
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={personal.name} />
     <meta property="og:locale" content={isPt ? "pt_BR" : "en_US"} />
@@ -125,6 +149,7 @@ const personLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={title} />
 
     <!-- Dados estruturados (somente em páginas indexáveis) -->
     {
@@ -134,6 +159,12 @@ const personLd = {
           set:html={JSON.stringify(personLd)}
         />
       )
+    }
+    {
+      !noindex &&
+        extraLd.map((obj) => (
+          <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+        ))
     }
 
     <!-- Fontes -->

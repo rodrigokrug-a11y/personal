@@ -1,0 +1,53 @@
+{
+  "name": "Theo - beadev.ai",
+  "order": 5,
+  "year": "2025–2026",
+  "featured": false,
+  "gradient": "linear-gradient(135deg,#14b8a6,#0d9488 45%,#0e7490)",
+  "image": "/images/projects/theo/image.png",
+  "tagline": {
+    "pt": "Ferramentas internas em minutos, sem programar.",
+    "en": "Internal tools in minutes, no coding."
+  },
+  "description": {
+    "pt": "Plataforma que transforma uma descrição em português num app completo — banco, login, relatórios, PDF e mais — em poucos minutos. Voltada a PMEs e profissionais cansados de viver em planilhas.",
+    "en": "A platform that turns a plain Portuguese description into a complete app — database, login, reports, PDF and more — in minutes. Built for SMBs and pros tired of running their work on spreadsheets."
+  },
+  "role": {
+    "pt": "Fundador e criador solo — visão de produto, design e tudo que faz a plataforma funcionar.",
+    "en": "Founder and solo creator — product vision, design and everything that makes the platform run."
+  },
+  "tags": [
+    "SaaS",
+    "Produto",
+    "IA aplicada",
+    "Inovação",
+    "No-code"
+  ],
+  "metrics": [
+    {
+      "value": "Minutos",
+      "label": {
+        "pt": "da ideia ao app rodando",
+        "en": "from idea to live app"
+      }
+    },
+    {
+      "value": "40+",
+      "label": {
+        "pt": "ferramentas profissionais embutidas",
+        "en": "professional tools built-in"
+      }
+    },
+    {
+      "value": "Sem código",
+      "label": {
+        "pt": "qualquer pessoa cria",
+        "en": "anyone can build"
+      }
+    }
+  ],
+  "link": "https://theo.beadev.ai",
+  "bodyPt": "## O problema\n\nDonos de pequenas e médias empresas — clínicas, lojas, agências, escritórios, prestadores de serviço — vivem dependendo de planilhas. Cada um tem uma necessidade específica que nenhum sistema pronto resolve: o controle de pedidos da loja, o agendamento da clínica, o relatório semanal do escritório. Mandar fazer um app sob medida custa milhares de reais e leva meses; ferramentas no-code tradicionais ainda exigem semanas de configuração, impõem suas próprias regras e travam na primeira customização real. O resultado: a maioria das boas ideias morre na cabeça de quem teve, ou vira mais uma aba de planilha.\n\n## A solução\n\nO **theo** transforma uma descrição em português num app de verdade — banco de dados, telas, login, envio de email, geração de PDF, leitura de QR code — em poucos minutos. Você diz *\"preciso de um controle de pedidos com cliente, valor e status\"* e recebe a ferramenta funcionando.\n\nCada app vira parte do ecossistema da sua empresa: você convida a equipe, define quem vê o quê, organiza por categorias, e tudo aparece pronto pra usar. Quando precisa de ajuste — *\"adicionar coluna de prioridade\"* — você descreve a mudança e o sistema atualiza. Não há código pra você ver ou configurar; só a ferramenta funcionando do jeito que o seu negócio precisa.\n\n## A inovação\n\nA diferença do theo está no que acontece nos bastidores. Cada app criado passa por **quatro camadas de defesa** que pegam erros antes do usuário ver:\n\n- Instruções rigorosas que orientam a inteligência artificial pra não inventar atalhos.\n- Validações que rejeitam padrões problemáticos antes do app ir pro ar.\n- Correções automáticas que reescrevem trechos defeituosos.\n- Protetores em tempo real que consertam glitches visuais na hora.\n\nMais raro ainda: o sistema **aprende com cada uso real**. Quando um padrão de erro aparece em três apps diferentes, vira uma regra nova que previne o mesmo problema nos próximos. Por isso o theo fica mais robusto a cada usuário — o oposto da maioria das plataformas, que envelhecem mal.\n\nOutro diferencial: o theo embute **mais de 40 ferramentas profissionais** que normalmente exigiriam horas de configuração — geração de PDF com assinatura digital, leitura e criação de QR code, validação de CPF/CNPJ/CEP, mapas, gráficos, calendários com recorrência. Tudo pronto, em português, sem você saber que está lá.\n\n## O resultado\n\nDonos de negócio, gestores e profissionais sem nenhuma experiência técnica conseguem criar ferramentas internas que antes só estavam disponíveis pra empresas grandes com time de TI. O tempo entre *\"tenho essa ideia\"* e *\"minha equipe já está usando hoje\"* caiu de semanas ou meses para poucos minutos.\n\nPara o usuário final, é como ter um desenvolvedor pessoal disponível 24/7, em português, que entende o negócio dele. Para o mercado, é a primeira vez que uma plataforma brasileira chega tão perto da promessa de *\"qualquer um cria software\"*.",
+  "bodyEn": "## The problem\n\nSmall and mid-sized business owners — clinics, shops, agencies, offices, service providers — live tied to spreadsheets. Each one has a specific need no off-the-shelf system covers: the shop's order tracker, the clinic's scheduler, the agency's weekly report. Commissioning custom software costs thousands and takes months; traditional no-code tools still demand weeks of setup, force their own logic, and break the moment you ask for something genuinely custom. The result: most useful ideas die in the heads of those who had them, or turn into yet another spreadsheet tab.\n\n## The solution\n\n**theo** turns a plain Portuguese description into a working app — database, screens, login, email sending, PDF generation, QR code reading — in minutes. You say *\"I need an order tracker with customer, amount and status\"* and get the tool ready to use.\n\nEach app becomes part of your business ecosystem: you invite your team, decide who sees what, organize by categories, and it just works. When you need changes — *\"add a priority column\"* — you describe the tweak and the system updates. There's no code to manage; only the tool, working the way your business needs it.\n\n## The innovation\n\nThe difference lies in what happens behind the scenes. Every app generation goes through **four layers of defense** that catch errors before users ever see them:\n\n- Strict instructions guiding the AI so it can't take dangerous shortcuts.\n- Validations that reject problematic patterns before an app goes live.\n- Automatic corrections that rewrite faulty bits on the spot.\n- Live protectors that fix visual glitches in real time.\n\nRarer still: the system **learns from every real use**. When an error pattern shows up across three different apps, it becomes a new rule that prevents the same problem in future ones. That's why theo gets sturdier with every user — the opposite of most platforms, which age badly.\n\nAnother differentiator: theo bundles **more than 40 professional tools** that would normally take hours to set up — PDF generation with digital signatures, QR code reading and creation, Brazilian ID and ZIP validation, maps, charts, calendars with recurrence. Everything ready, in Portuguese, without you knowing it's there.\n\n## The outcome\n\nBusiness owners, managers and professionals with no technical background can now build internal tools that used to be reserved for large companies with their own IT teams. The time between *\"I have this idea\"* and *\"my team is using it today\"* dropped from weeks or months to just a few minutes.\n\nFor end users, it feels like having a personal developer available 24/7, in Portuguese, who actually understands the business. For the market, it's the first time a Brazilian platform has come this close to the promise of *\"anyone can build software.\"*"
+}

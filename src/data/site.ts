@@ -104,6 +104,8 @@ export const personal = {
   location: profileData.location as Localized,
   headline: profileData.headline as Localized,
   intro: profileData.intro as Localized,
+  metaDescription: ((profileData as { metaDescription?: Localized }).metaDescription ??
+    profileData.intro) as Localized,
   aboutTitle: profileData.aboutTitle as Localized,
   about: {
     pt: profileData.about.map((p) => p.pt),

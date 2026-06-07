@@ -21,6 +21,32 @@ const altHref =
 
 const title = `${project.name} — ${personal.name}`;
 const description = project.description[lang];
+
+// Dados estruturados por projeto (trilha de navegação + obra).
+const site = Astro.site ?? new URL("https://rodrigokrug.com.br");
+const canonical = new URL(Astro.url.pathname, site).href;
+const isPt = lang === "pt";
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: isPt ? "Início" : "Home", item: new URL(homeHref, site).href },
+    { "@type": "ListItem", position: 2, name: isPt ? "Projetos" : "Projects", item: new URL(projectsHref, site).href },
+    { "@type": "ListItem", position: 3, name: project.name, item: canonical },
+  ],
+};
+const creativeWorkLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.name,
+  headline: project.tagline[lang],
+  description: project.description[lang],
+  inLanguage: isPt ? "pt-BR" : "en",
+  url: canonical,
+  ...(project.image ? { image: new URL(project.image, site).href } : {}),
+  ...(project.tags?.length ? { keywords: project.tags.join(", ") } : {}),
+  author: { "@type": "Person", name: personal.name, url: site.href },
+};
 ---
 
 <Layout
@@ -30,6 +56,7 @@ const description = project.description[lang];
   image={project.image}
   ogType="article"
   altPath={altHref}
+  jsonLd={[breadcrumbLd, creativeWorkLd]}
 >
   <!-- Cabeçalho simples (volta para a home) -->
   <header class="glass sticky top-0 z-50 border-b border-slate-200/60">

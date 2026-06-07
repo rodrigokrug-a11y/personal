@@ -24,7 +24,8 @@ const title =
   lang === "pt"
     ? `${personal.name} — Engenheiro e Diretor de Operações`
     : `${personal.name} — Engineer & Director of Operations`;
-const description = personal.intro[lang];
+// Meta description curta (120-160) para não truncar na busca do Google.
+const description = personal.metaDescription[lang];
 const altPath = lang === "pt" ? "/en/" : "/";
 ---
 

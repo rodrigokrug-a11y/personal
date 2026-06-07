@@ -20,6 +20,33 @@ const altHref =
 
 const title = `${article.title[lang]} — ${personal.name}`;
 const description = article.excerpt[lang];
+
+// Dados estruturados do artigo (trilha de navegação + artigo).
+const site = Astro.site ?? new URL("https://rodrigokrug.com.br");
+const canonical = new URL(Astro.url.pathname, site).href;
+const isPt = lang === "pt";
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: isPt ? "Início" : "Home", item: new URL(homeHref, site).href },
+    { "@type": "ListItem", position: 2, name: "Blog", item: new URL(blogHref, site).href },
+    { "@type": "ListItem", position: 3, name: article.title[lang], item: canonical },
+  ],
+};
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: article.title[lang],
+  description: article.excerpt[lang],
+  inLanguage: isPt ? "pt-BR" : "en",
+  url: canonical,
+  ...(article.date ? { datePublished: article.date } : {}),
+  ...(article.cover ? { image: new URL(article.cover, site).href } : {}),
+  ...(article.tags?.length ? { keywords: article.tags.join(", ") } : {}),
+  author: { "@type": "Person", name: personal.name, url: site.href },
+  mainEntityOfPage: canonical,
+};
 ---
 
 <Layout
@@ -29,6 +56,7 @@ const description = article.excerpt[lang];
   image={article.cover}
   ogType="article"
   altPath={altHref}
+  jsonLd={[breadcrumbLd, articleLd]}
 >
   <header class="glass sticky top-0 z-50 border-b border-slate-200/60">
     <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3.5">
