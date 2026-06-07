@@ -125,6 +125,11 @@ body {
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
 }
+/* No escuro: definido FORA de @layer (mesma camada do .glass base) para vencer.
+   Senão a barra de navegação fica clara no modo escuro. */
+html.dark .glass {
+  background: rgba(15, 23, 42, 0.8);
+}
 
 /* ---------------------------------------------------------------------------
    MODO ESCURO (.dark)
@@ -185,9 +190,6 @@ html.dark .bg-white\/70 { background-color: rgba(30, 41, 59, 0.7) !important; }
 /* Inputs e vidro */
 html.dark input,
 html.dark textarea { background-color: #0f172a !important; color: #e2e8f0 !important; }
-html.dark .glass {
-  background: rgba(15, 23, 42, 0.72);
-}
 /* Conteúdo rico no escuro */
 html.dark .richtext { color: #cbd5e1; }
 html.dark .richtext h1,
