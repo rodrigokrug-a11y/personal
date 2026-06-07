@@ -2,6 +2,7 @@
 import { personal } from "../data/site";
 import { useTranslations, type Lang } from "../i18n/ui";
 import LangToggle from "./LangToggle.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 import Icon from "./Icon.astro";
 
 interface Props {
@@ -54,6 +55,7 @@ const links = [
 
       <!-- Ações -->
       <div class="flex items-center gap-2">
+        <ThemeToggle />
         <LangToggle lang={lang} />
         <a
           href="#contato"

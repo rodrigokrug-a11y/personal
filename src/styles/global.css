@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Habilita o modo escuro via classe .dark no <html> (toggle manual). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ---------------------------------------------------------------------------
    Tema (Tailwind v4 — configuração via CSS)
    --------------------------------------------------------------------------- */
@@ -116,6 +119,74 @@ body {
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
 }
+
+/* ---------------------------------------------------------------------------
+   MODO ESCURO (.dark)
+   Override centralizado: em vez de editar dezenas de componentes, mapeamos
+   aqui os tons claros mais usados (white / slate) para tons escuros.
+   --------------------------------------------------------------------------- */
+.dark body {
+  background-color: #0b1120; /* fundo geral escuro (slate-950+) */
+  color: #e2e8f0;
+}
+/* No escuro, o TÍTULO em gradiente precisa de tons claros para ser legível
+   (o gradiente normal é grafite escuro, que somem no fundo escuro).
+   Trata só o texto — os botões .bg-brand continuam com o gradiente escuro. */
+.dark .text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    #e2e8f0,
+    #f8fafc 40%,
+    #fbbf24
+  );
+}
+/* Botões/superfícies da marca no escuro: âmbar como cor de ação (o grafite
+   escuro sumiria no fundo escuro). Texto escuro para contraste no âmbar. */
+.dark .bg-brand,
+.dark .bg-brand * {
+  color: #0b1120 !important; /* texto escuro sobre o âmbar, melhor contraste */
+}
+.dark .bg-brand {
+  background-image: linear-gradient(100deg, #f59e0b, #d97706 60%, #b45309);
+}
+.dark .ring-brand {
+  background-image: linear-gradient(135deg, #fbbf24, #f59e0b 45%, #d97706);
+}
+/* Fundos brancos / claros → superfícies escuras */
+.dark .bg-white { background-color: #0f172a !important; }
+.dark .bg-slate-50 { background-color: #111c33 !important; }
+.dark .bg-slate-50\/60 { background-color: rgba(17, 28, 51, 0.6) !important; }
+/* Bordas claras → bordas escuras */
+.dark .border-slate-200 { border-color: #1e293b !important; }
+.dark .border-slate-300 { border-color: #334155 !important; }
+.dark .border-white\/60,
+.dark .border-white\/70 { border-color: rgba(148, 163, 184, 0.15) !important; }
+/* Textos escuros → claros */
+.dark .text-slate-900 { color: #f1f5f9 !important; }
+.dark .text-slate-800 { color: #e2e8f0 !important; }
+.dark .text-slate-700 { color: #cbd5e1 !important; }
+.dark .text-slate-600 { color: #94a3b8 !important; }
+.dark .text-slate-500 { color: #94a3b8 !important; }
+/* Inputs e vidro */
+.dark input,
+.dark textarea { background-color: #0f172a !important; color: #e2e8f0 !important; }
+.dark .glass {
+  background: rgba(15, 23, 42, 0.72);
+}
+/* Conteúdo rico no escuro */
+.dark .richtext { color: #cbd5e1; }
+.dark .richtext h1,
+.dark .richtext h2,
+.dark .richtext h3,
+.dark .richtext h4 { color: #f1f5f9; }
+.dark .richtext code { background: #1e293b; }
+.dark .richtext th { background: #1e293b; color: #f1f5f9; }
+.dark .richtext th,
+.dark .richtext td { border-color: #334155; }
+.dark .richtext tr:nth-child(even) td { background: #0f172a; }
+.dark .richtext a { color: #fbbf24; }
+/* Grade de fundo do hero: linhas claras no modo escuro */
+.dark .hero-grid { color: #cbd5e1 !important; }
 
 /* ---------------------------------------------------------------------------
    Conteúdo rico das páginas de projeto (.richtext)
