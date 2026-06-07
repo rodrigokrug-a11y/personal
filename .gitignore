@@ -21,3 +21,11 @@ pnpm-debug.log*
 
 # transient scheduled-task lock
 .claude/scheduled_tasks.lock
+
+# operacional do VPS (não versionar — só conteúdo deve ser sincronizado)
+auto-rebuild.log
+rebuild.log
+*.log
+/auto-rebuild.sh
+/auto-rebuild.new.sh
+/rebuild-after-import.sh
