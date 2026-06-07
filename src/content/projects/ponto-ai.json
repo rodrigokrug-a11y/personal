@@ -24,5 +24,6 @@
   "metrics": [],
   "link": "https://ponto.ai",
   "bodyPt": "🔧 Conte a história do ponto.ai aqui: a proposta de valor com IA, o público, o seu papel e o impacto. Você pode adicionar imagens, tabelas e links pelo editor.",
-  "bodyEn": "🔧 Tell the ponto.ai story here: the AI value proposition, the audience, your role and the impact. You can add images, tables and links from the editor."
+  "bodyEn": "🔧 Tell the ponto.ai story here: the AI value proposition, the audience, your role and the impact. You can add images, tables and links from the editor.",
+  "draft": true
 }

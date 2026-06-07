@@ -24,5 +24,6 @@
   "metrics": [],
   "link": null,
   "bodyPt": "🔧 Conte a história do Biadev aqui: o que é, o problema que resolve, para quem, o seu papel e os resultados. Você pode adicionar imagens, tabelas e links pelo editor.",
-  "bodyEn": "🔧 Tell the Biadev story here: what it is, the problem it solves, for whom, your role and the results. You can add images, tables and links from the editor."
+  "bodyEn": "🔧 Tell the Biadev story here: what it is, the problem it solves, for whom, your role and the results. You can add images, tables and links from the editor.",
+  "draft": true
 }

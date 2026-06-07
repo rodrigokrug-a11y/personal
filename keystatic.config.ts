@@ -89,6 +89,11 @@ export default config({
           description: "Menor número aparece primeiro.",
         }),
         year: fields.text({ label: "Ano / período", description: "Ex.: 2021 — presente" }),
+        draft: fields.checkbox({
+          label: "Rascunho (não publicar)",
+          defaultValue: false,
+          description: "Marque para esconder do site (home, página e Google) até estar pronto.",
+        }),
         featured: fields.checkbox({ label: "Destaque (★)", defaultValue: false }),
         gradient: fields.select({
           label: "Cor do cartão",

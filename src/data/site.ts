@@ -42,6 +42,8 @@ export interface Project {
   image?: string;
   gradient: string;
   featured?: boolean;
+  /** Rascunho: oculto do site, das rotas e do sitemap (como no blog). */
+  draft?: boolean;
   /** Corpo em Markdown, por idioma. */
   body: Record<Lang, string>;
 }
@@ -144,9 +146,11 @@ export const projects: Project[] = Object.entries(projectModules)
       image: img(p.image),
       gradient: p.gradient,
       featured: p.featured ?? false,
+      draft: p.draft ?? false,
       body: { pt: p.bodyPt ?? "", en: p.bodyEn ?? "" },
     } as Project;
   })
+  .filter((p) => !p.draft)
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
 
 /** Busca um projeto pelo slug (usado nas páginas de detalhe). */
