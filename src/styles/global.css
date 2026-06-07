@@ -7,13 +7,28 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     sans-serif;
   --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Cor de destaque ("accent") — usada em links, ícones, foco, hover.
+     Para reestilizar o site, troque esta escala + as 3 variáveis de marca
+     abaixo. Hoje: âmbar (paleta grafite + âmbar). */
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
 }
 
 :root {
-  /* Gradiente da marca — mude estas 3 cores para reestilizar o site inteiro */
-  --brand-1: #6366f1; /* indigo  */
-  --brand-2: #8b5cf6; /* violet  */
-  --brand-3: #d946ef; /* fuchsia */
+  /* Gradiente da marca — mude estas 3 cores para reestilizar o site inteiro.
+     Paleta atual: grafite (slate escuro) + âmbar. */
+  --brand-1: #334155; /* slate-700 */
+  --brand-2: #0f172a; /* slate-900 */
+  --brand-3: #f59e0b; /* amber-500 */
 }
 
 /* ---------------------------------------------------------------------------
@@ -32,7 +47,7 @@ body {
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.25);
+  background: rgba(245, 158, 11, 0.25); /* âmbar */
 }
 
 /* ---------------------------------------------------------------------------
@@ -80,17 +95,17 @@ body {
   background-image:
     radial-gradient(
       42% 42% at 18% 18%,
-      rgba(99, 102, 241, 0.18),
+      rgba(245, 158, 11, 0.16),
       transparent 70%
     ),
     radial-gradient(
       38% 38% at 82% 8%,
-      rgba(217, 70, 239, 0.16),
+      rgba(251, 191, 36, 0.14),
       transparent 70%
     ),
     radial-gradient(
       45% 45% at 72% 82%,
-      rgba(56, 189, 248, 0.14),
+      rgba(51, 65, 85, 0.1),
       transparent 70%
     );
 }
@@ -140,13 +155,13 @@ body {
   margin-top: 1.75rem;
 }
 .richtext a {
-  color: #7c3aed; /* violet-600 */
+  color: #b45309; /* accent-700 (âmbar escuro, legível em fundo branco) */
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .richtext a:hover {
-  color: #6d28d9;
+  color: #92400e;
 }
 .richtext ul,
 .richtext ol {

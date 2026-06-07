@@ -22,7 +22,7 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
     <p class="mb-6 text-sm leading-relaxed text-slate-600">
       Cole o JSON gerado pelo prompt (artigo ou projeto) e clique em importar.
       O conteúdo é salvo no servidor e o site se reconstrói sozinho em ~1 minuto.
-      <a href="/admin" class="text-violet-600 underline">Voltar ao admin</a>.
+      <a href="/admin" class="text-accent-600 underline">Voltar ao admin</a>.
     </p>
 
     <form id="form" class="space-y-5">
@@ -34,7 +34,7 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
           id="password"
           autocomplete="current-password"
           required
-          class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-100"
+          class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-100"
           placeholder="Sua senha de admin"
         />
       </div>
@@ -43,14 +43,14 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
       <div>
         <label class="mb-1.5 block text-sm font-semibold text-slate-700">Tipo</label>
         <div class="flex gap-2">
-          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:text-violet-700">
-            <input type="radio" name="kind" value="auto" checked class="accent-violet-600" /> Detectar
+          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-accent-500 has-[:checked]:bg-accent-50 has-[:checked]:text-accent-700">
+            <input type="radio" name="kind" value="auto" checked class="accent-accent-600" /> Detectar
           </label>
-          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:text-violet-700">
-            <input type="radio" name="kind" value="blog" class="accent-violet-600" /> Artigo
+          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-accent-500 has-[:checked]:bg-accent-50 has-[:checked]:text-accent-700">
+            <input type="radio" name="kind" value="blog" class="accent-accent-600" /> Artigo
           </label>
-          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:text-violet-700">
-            <input type="radio" name="kind" value="projeto" class="accent-violet-600" /> Projeto
+          <label class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 has-[:checked]:border-accent-500 has-[:checked]:bg-accent-50 has-[:checked]:text-accent-700">
+            <input type="radio" name="kind" value="projeto" class="accent-accent-600" /> Projeto
           </label>
         </div>
       </div>
@@ -63,12 +63,12 @@ const hasServer = import.meta.env.SERVER === "1" || !!import.meta.env.IMPORT_PAS
           required
           rows="14"
           spellcheck="false"
-          class="w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-xs leading-relaxed focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-100"
+          class="w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-xs leading-relaxed focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-100"
           placeholder={'{\n  "name": "...",\n  "tagline": { "pt": "...", "en": "..." },\n  ...\n}'}></textarea>
       </div>
 
       <label class="flex items-center gap-2 text-sm text-slate-600">
-        <input type="checkbox" id="overwrite" class="accent-violet-600" />
+        <input type="checkbox" id="overwrite" class="accent-accent-600" />
         Substituir se já existir um com o mesmo endereço
       </label>
 
