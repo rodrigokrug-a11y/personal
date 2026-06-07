@@ -49,6 +49,8 @@ body {
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.65; /* leitura mais confortável por padrão */
+  letter-spacing: -0.005em;
 }
 
 ::selection {

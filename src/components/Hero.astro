@@ -35,38 +35,37 @@ const t = useTranslations(lang);
           {t("hero.eyebrow")}
         </span>
 
+        <!-- Nome discreto; a FRASE DE VALOR é o protagonista -->
+        <p class="mt-6 font-display text-base font-semibold tracking-tight text-slate-500">
+          {personal.name} · {personal.role[lang]}
+        </p>
         <h1
-          class="font-display mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+          class="font-display mt-3 text-[2.6rem] font-bold leading-[1.03] tracking-tight text-slate-900 sm:text-6xl lg:text-[4.25rem]"
         >
-          {personal.name}
-          <span class="mt-2 block text-gradient">{personal.headline[lang]}</span>
+          <span class="text-gradient">{personal.headline[lang]}</span>
         </h1>
 
-        <p class="mt-4 text-sm font-semibold uppercase tracking-wider text-slate-500">
-          {personal.role[lang]}
-        </p>
-
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+        <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-600">
           {personal.intro[lang]}
         </p>
 
-        <div class="mt-9 flex flex-wrap items-center gap-3">
+        <div class="mt-10 flex flex-wrap items-center gap-3">
           <a
-            href="#projetos"
-            class="bg-brand group inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent-500/25 transition hover:opacity-90"
+            href="#contato"
+            class="bg-brand group inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold text-white shadow-lg shadow-accent-500/25 transition hover:opacity-90"
           >
-            {t("hero.cta.primary")}
+            {t("nav.cta")}
             <Icon name="arrow" class="h-4 w-4 transition group-hover:translate-x-0.5" />
           </a>
           <a
-            href="#contato"
-            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-6 py-3.5 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-white"
+            href="#projetos"
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-7 py-4 text-base font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-white"
           >
-            {t("hero.cta.secondary")}
+            {t("hero.cta.primary")}
           </a>
         </div>
 
-        <p class="mt-6 text-sm text-slate-500">{personal.location[lang]}</p>
+        <p class="mt-7 text-sm text-slate-500">{personal.location[lang]}</p>
       </div>
 
       <!-- Coluna da foto -->

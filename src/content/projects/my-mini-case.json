@@ -3,7 +3,7 @@
   "order": 1,
   "year": "2026",
   "featured": true,
-  "gradient": "linear-gradient(135deg,#6366f1,#8b5cf6 45%,#d946ef)",
+  "gradient": "linear-gradient(135deg,#0d9488,#0f766e 45%,#065f46)",
   "image": "/images/projects/my-mini-case/image.png",
   "tagline": {
     "pt": "Proteção sob medida para miniaturas, gerada em segundos.",
@@ -17,11 +17,34 @@
     "pt": "Fundador & Criador",
     "en": "Founder & Creator"
   },
-  "tags": ["SaaS", "Impressão 3D", "Produto", "Inovação"],
+  "tags": [
+    "SaaS",
+    "Impressão 3D",
+    "Produto",
+    "Inovação"
+  ],
   "metrics": [
-    { "value": "Segundos", "label": { "pt": "para gerar um case", "en": "to generate a case" } },
-    { "value": "3 idiomas", "label": { "pt": "alcance global", "en": "global reach" } },
-    { "value": "100%", "label": { "pt": "no navegador", "en": "in the browser" } }
+    {
+      "value": "Segundos",
+      "label": {
+        "pt": "para gerar um case",
+        "en": "to generate a case"
+      }
+    },
+    {
+      "value": "3 idiomas",
+      "label": {
+        "pt": "alcance global",
+        "en": "global reach"
+      }
+    },
+    {
+      "value": "100%",
+      "label": {
+        "pt": "no navegador",
+        "en": "in the browser"
+      }
+    }
   ],
   "link": "https://www.myminicase.com",
   "bodyPt": "## O problema\n\nColecionadores de miniaturas — de Warhammer a RPG de mesa — investem dezenas de horas pintando cada peça. Mas, na hora de transportar ou guardar, só existem opções ruins: espumas genéricas e caixas que não foram feitas para aquele formato. Uma queda ou um aperto errado destrói meses de trabalho.\n\nÉ um mercado global de milhões de hobbistas apaixonados, sem nenhuma solução prática de proteção sob medida — porque fazer um encaixe perfeito para cada peça, uma a uma, sempre foi caro e artesanal demais para escalar.\n\n## A solução\n\nO **MyMiniCase** automatiza exatamente isso. O usuário carrega o modelo 3D da sua miniatura e, em segundos, recebe um case de proteção desenhado na silhueta exata da peça — pronto para imprimir em qualquer impressora 3D doméstica.\n\nO que antes exigiria um designer e horas de modelagem manual virou um processo instantâneo e autosserviço. O encaixe é perfeito porque é gerado a partir da própria peça, não de um molde genérico.\n\n## A inovação\n\n- **Personalização em massa, a custo zero de produção.** Cada case é único, mas gerado automaticamente — combinando a customização do artesanal com a escala do digital.\n- **Privacidade por padrão.** Todo o processamento acontece no próprio navegador do usuário: o modelo nunca é enviado para um servidor. Rápido, seguro e sem fricção.\n- **Alcance global desde o primeiro dia.** Disponível em três idiomas, com pagamento internacional e entrega 100% digital — qualquer pessoa, em qualquer país, gera e imprime na hora.\n\n## O resultado\n\nUm produto completo no ar em **[myminicase.com](https://www.myminicase.com)**: da experiência de geração ao pagamento, pronto para atender colecionadores no mundo todo — operado de forma enxuta, com custo de infraestrutura próximo de zero até a primeira venda.\n\n> Da ideia ao produto pronto para vender: concebido, desenhado e construído de ponta a ponta.",
