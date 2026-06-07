@@ -15,25 +15,25 @@
 
   /* Cor de destaque ("accent") — usada em links, ícones, foco, hover.
      Para reestilizar o site, troque esta escala + as 3 variáveis de marca
-     abaixo. Hoje: âmbar (paleta grafite + âmbar). */
-  --color-accent-50: #fffbeb;
-  --color-accent-100: #fef3c7;
-  --color-accent-200: #fde68a;
-  --color-accent-300: #fcd34d;
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-  --color-accent-700: #b45309;
-  --color-accent-800: #92400e;
-  --color-accent-900: #78350f;
+     abaixo. Hoje: teal (verde tiffany escuro). */
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-300: #5eead4;
+  --color-accent-400: #2dd4bf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+  --color-accent-700: #0f766e;
+  --color-accent-800: #115e59;
+  --color-accent-900: #134e4a;
 }
 
 :root {
   /* Gradiente da marca — mude estas 3 cores para reestilizar o site inteiro.
-     Paleta atual: grafite (slate escuro) + âmbar. */
-  --brand-1: #334155; /* slate-700 */
-  --brand-2: #0f172a; /* slate-900 */
-  --brand-3: #f59e0b; /* amber-500 */
+     Paleta atual: verde tiffany escuro (teal). */
+  --brand-1: #0f766e; /* teal-700 */
+  --brand-2: #134e4a; /* teal-900 */
+  --brand-3: #0d9488; /* teal-600 (destaque) */
 }
 
 /* ---------------------------------------------------------------------------
@@ -52,7 +52,7 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.25); /* âmbar */
+  background: rgba(13, 148, 136, 0.25); /* teal */
 }
 
 /* ---------------------------------------------------------------------------
@@ -75,18 +75,18 @@ body {
   color: transparent;
 }
 
-/* Botões / superfícies de AÇÃO: âmbar SÓLIDO (sem gradiente — visual mais
-   limpo e executivo). Texto escuro garante bom contraste sobre o âmbar. */
+/* Botões / superfícies de AÇÃO: teal SÓLIDO (sem gradiente — visual limpo e
+   executivo). Texto branco garante bom contraste sobre o teal escuro. */
 .bg-brand {
   background-image: none;
-  background-color: #f59e0b;
+  background-color: #0d9488;
 }
 .bg-brand,
 .bg-brand * {
-  color: #1e1405 !important; /* marrom-escuro quase preto, ótimo contraste */
+  color: #ffffff !important; /* branco — ótimo contraste sobre o teal */
 }
 .bg-brand:hover {
-  background-color: #d97706; /* hover: âmbar um tom mais escuro, sem opacidade */
+  background-color: #0f766e; /* hover: teal um tom mais escuro */
 }
 
 /* Borda em gradiente (usada nos cards/anel da foto) */
@@ -104,12 +104,12 @@ body {
   background-image:
     radial-gradient(
       42% 42% at 18% 18%,
-      rgba(245, 158, 11, 0.16),
+      rgba(13, 148, 136, 0.16),
       transparent 70%
     ),
     radial-gradient(
       38% 38% at 82% 8%,
-      rgba(251, 191, 36, 0.14),
+      rgba(45, 212, 191, 0.14),
       transparent 70%
     ),
     radial-gradient(
@@ -150,22 +150,19 @@ html.dark .text-gradient {
     100deg,
     #e2e8f0,
     #f8fafc 40%,
-    #fbbf24
+    #2dd4bf
   );
 }
-/* Botões/superfícies da marca no escuro: âmbar como cor de ação (o grafite
-   escuro sumiria no fundo escuro). Texto escuro para contraste no âmbar. */
-/* No escuro, o âmbar do botão pode ser um pouco mais vivo. Texto escuro
-   (herdado da regra .bg-brand acima) mantém o contraste. */
+/* Botões da marca no escuro: teal um pouco mais vivo, texto branco. */
 html.dark .bg-brand {
   background-image: none;
-  background-color: #f59e0b;
+  background-color: #14b8a6;
 }
 html.dark .bg-brand:hover {
-  background-color: #fbbf24; /* no escuro, hover clareia */
+  background-color: #2dd4bf; /* no escuro, hover clareia */
 }
 html.dark .ring-brand {
-  background-image: linear-gradient(135deg, #fbbf24, #f59e0b 45%, #d97706);
+  background-image: linear-gradient(135deg, #2dd4bf, #14b8a6 45%, #0d9488);
 }
 /* Fundos brancos / claros → superfícies escuras */
 html.dark .bg-white { background-color: #0f172a !important; }
@@ -201,7 +198,7 @@ html.dark .richtext th { background: #1e293b; color: #f1f5f9; }
 html.dark .richtext th,
 html.dark .richtext td { border-color: #334155; }
 html.dark .richtext tr:nth-child(even) td { background: #0f172a; }
-html.dark .richtext a { color: #fbbf24; }
+html.dark .richtext a { color: #2dd4bf; }
 /* Grade de fundo do hero: linhas claras no modo escuro */
 html.dark .hero-grid { color: #cbd5e1 !important; }
 } /* fim @layer utilities (modo escuro) */
@@ -244,13 +241,13 @@ html.dark .hero-grid { color: #cbd5e1 !important; }
   margin-top: 1.75rem;
 }
 .richtext a {
-  color: #b45309; /* accent-700 (âmbar escuro, legível em fundo branco) */
+  color: #0f766e; /* accent-700 (teal escuro, legível em fundo branco) */
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .richtext a:hover {
-  color: #92400e;
+  color: #115e59;
 }
 .richtext ul,
 .richtext ol {
