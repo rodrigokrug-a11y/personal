@@ -73,14 +73,15 @@ body {
   color: transparent;
 }
 
-/* Fundo sólido com gradiente da marca */
+/* Botões / superfícies de AÇÃO: âmbar limpo (sem o grafite no meio, que
+   deixava o degradê "enlameado"). O grafite fica para estrutura/texto.
+   Texto escuro garante bom contraste sobre o âmbar. */
 .bg-brand {
-  background-image: linear-gradient(
-    100deg,
-    var(--brand-1),
-    var(--brand-2) 45%,
-    var(--brand-3)
-  );
+  background-image: linear-gradient(100deg, #fbbf24, #f59e0b 55%, #d97706);
+}
+.bg-brand,
+.bg-brand * {
+  color: #1e1405 !important; /* marrom-escuro quase preto, ótimo contraste */
 }
 
 /* Borda em gradiente (usada nos cards/anel da foto) */
@@ -142,12 +143,10 @@ body {
 }
 /* Botões/superfícies da marca no escuro: âmbar como cor de ação (o grafite
    escuro sumiria no fundo escuro). Texto escuro para contraste no âmbar. */
-.dark .bg-brand,
-.dark .bg-brand * {
-  color: #0b1120 !important; /* texto escuro sobre o âmbar, melhor contraste */
-}
+/* No escuro, o âmbar do botão pode ser um pouco mais vivo. Texto escuro
+   (herdado da regra .bg-brand acima) mantém o contraste. */
 .dark .bg-brand {
-  background-image: linear-gradient(100deg, #f59e0b, #d97706 60%, #b45309);
+  background-image: linear-gradient(100deg, #fcd34d, #f59e0b 55%, #d97706);
 }
 .dark .ring-brand {
   background-image: linear-gradient(135deg, #fbbf24, #f59e0b 45%, #d97706);
