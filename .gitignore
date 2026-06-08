@@ -26,6 +26,8 @@ pnpm-debug.log*
 auto-rebuild.log
 rebuild.log
 *.log
+*.bak
+*.old.sh
 /auto-rebuild.sh
 /auto-rebuild.new.sh
 /rebuild-after-import.sh
