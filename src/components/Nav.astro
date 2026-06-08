@@ -4,6 +4,7 @@ import { useTranslations, type Lang } from "../i18n/ui";
 import LangToggle from "./LangToggle.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
 
 interface Props {
   lang: Lang;
@@ -26,12 +27,9 @@ const links = [
     <nav
       class="glass relative mt-3 flex items-center justify-between gap-4 rounded-2xl border border-white/60 px-4 py-3 shadow-sm shadow-slate-900/5 sm:px-5"
     >
-      <!-- Logo -->
+      <!-- Logo (monograma R. Krug) -->
       <a href="#top" class="flex items-center gap-2.5">
-        <span
-          class="bg-brand grid h-9 w-9 place-items-center rounded-xl text-sm font-bold text-white shadow-sm"
-          >{personal.initials}</span
-        >
+        <Logo class="h-9 w-auto" alt={personal.name} />
         <span class="font-display hidden text-sm font-semibold tracking-tight text-slate-900 sm:block"
           >{personal.name}</span
         >

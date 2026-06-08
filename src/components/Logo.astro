@@ -1,0 +1,27 @@
+---
+// Monograma R. Krug. Versão carvão no tema claro, dourada no tema escuro
+// (a marca tem as duas versões — garante contraste nos dois fundos).
+interface Props {
+  class?: string;
+  alt?: string;
+}
+const { class: cls = "h-9 w-auto", alt = "R. Krug" } = Astro.props;
+---
+
+<span class="inline-flex shrink-0 items-center">
+  <img
+    src="/images/brand/rk-monogram-dark.png"
+    alt={alt}
+    width="48"
+    height="36"
+    class:list={[cls, "dark:hidden"]}
+  />
+  <img
+    src="/images/brand/rk-monogram-gold.png"
+    alt=""
+    aria-hidden="true"
+    width="48"
+    height="36"
+    class:list={["hidden", cls, "dark:block"]}
+  />
+</span>

@@ -2,6 +2,7 @@
 import { personal, socials } from "../data/site";
 import { useTranslations, type Lang } from "../i18n/ui";
 import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
 
 interface Props {
   lang: Lang;
@@ -14,9 +15,7 @@ const year = 2025; // 🔧 atualize o ano se desejar
 <footer class="border-t border-slate-200 bg-white">
   <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 py-10 sm:flex-row sm:justify-between">
     <div class="flex items-center gap-2.5">
-      <span class="bg-brand grid h-8 w-8 place-items-center rounded-lg text-xs font-bold text-white">
-        {personal.initials}
-      </span>
+      <Logo class="h-8 w-auto" alt={personal.name} />
       <span class="text-sm text-slate-500">
         © {year} {personal.name}. {t("footer.rights")}
       </span>

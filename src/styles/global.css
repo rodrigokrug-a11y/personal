@@ -9,31 +9,31 @@
    Tema (Tailwind v4 — configuração via CSS)
    --------------------------------------------------------------------------- */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+  /* Marca R. Krug — tipografia Montserrat (SemiBold + Regular). */
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 
   /* Cor de destaque ("accent") — usada em links, ícones, foco, hover.
-     Para reestilizar o site, troque esta escala + as 3 variáveis de marca
-     abaixo. Hoje: teal (verde tiffany escuro). */
-  --color-accent-50: #f0fdfa;
-  --color-accent-100: #ccfbf1;
-  --color-accent-200: #99f6e4;
-  --color-accent-300: #5eead4;
-  --color-accent-400: #2dd4bf;
-  --color-accent-500: #14b8a6;
-  --color-accent-600: #0d9488;
-  --color-accent-700: #0f766e;
-  --color-accent-800: #115e59;
-  --color-accent-900: #134e4a;
+     Paleta da marca R. Krug: DOURADO (#C9A55A). Escala centrada no 500. */
+  --color-accent-50: #fbf7ef;
+  --color-accent-100: #f5ead3;
+  --color-accent-200: #ead4a6;
+  --color-accent-300: #ddbc73;
+  --color-accent-400: #d2ac5e;
+  --color-accent-500: #c9a55a; /* DOURADO da marca */
+  --color-accent-600: #b08c42;
+  --color-accent-700: #8a6d33; /* dourado profundo — links/texto sobre claro */
+  --color-accent-800: #6b5427;
+  --color-accent-900: #4d3d1e;
 }
 
 :root {
-  /* Gradiente da marca — mude estas 3 cores para reestilizar o site inteiro.
-     Paleta atual: verde tiffany escuro (teal). */
-  --brand-1: #0f766e; /* teal-700 */
-  --brand-2: #134e4a; /* teal-900 */
-  --brand-3: #0d9488; /* teal-600 (destaque) */
+  /* Gradiente da marca (dourado). Mude estas 3 cores para reestilizar o site.
+     Paleta R. Krug: Dourado #C9A55A / Carvão #111111 / Cinza claro #F2F2F2. */
+  --brand-1: #e2c078; /* dourado claro */
+  --brand-2: #c9a55a; /* dourado da marca */
+  --brand-3: #9a7634; /* dourado profundo */
 }
 
 /* ---------------------------------------------------------------------------
@@ -54,7 +54,7 @@ body {
 }
 
 ::selection {
-  background: rgba(13, 148, 136, 0.25); /* teal */
+  background: rgba(201, 165, 90, 0.3); /* dourado da marca */
 }
 
 /* ---------------------------------------------------------------------------
@@ -64,31 +64,32 @@ body {
   font-family: var(--font-display);
 }
 
-/* Texto com preenchimento em gradiente */
+/* Texto com preenchimento em gradiente dourado. No claro usa tons profundos
+   (legível sobre branco em títulos grandes); no escuro vira branco→dourado. */
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    var(--brand-1),
-    var(--brand-2) 45%,
-    var(--brand-3)
+    #b08c42,
+    #8a6d33 45%,
+    #c9a55a
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Botões / superfícies de AÇÃO: teal SÓLIDO (sem gradiente — visual limpo e
-   executivo). Texto branco garante bom contraste sobre o teal escuro. */
+/* Botões / superfícies de AÇÃO: DOURADO sólido com texto CARVÃO (#111).
+   Dourado claro pede texto escuro — contraste ~9:1, visual premium da marca. */
 .bg-brand {
   background-image: none;
-  background-color: #0d9488;
+  background-color: #c9a55a;
 }
 .bg-brand,
 .bg-brand * {
-  color: #ffffff !important; /* branco — ótimo contraste sobre o teal */
+  color: #111111 !important; /* carvão — ótimo contraste sobre o dourado */
 }
 .bg-brand:hover {
-  background-color: #0f766e; /* hover: teal um tom mais escuro */
+  background-color: #d4b46e; /* hover: dourado um tom mais claro */
 }
 
 /* Borda em gradiente (usada nos cards/anel da foto) */
@@ -101,22 +102,22 @@ body {
   );
 }
 
-/* Fundo "mesh" suave com manchas de cor */
+/* Fundo "mesh" suave com manchas douradas + carvão */
 .mesh-bg {
   background-image:
     radial-gradient(
       42% 42% at 18% 18%,
-      rgba(13, 148, 136, 0.16),
+      rgba(201, 165, 90, 0.16),
       transparent 70%
     ),
     radial-gradient(
       38% 38% at 82% 8%,
-      rgba(45, 212, 191, 0.14),
+      rgba(226, 192, 120, 0.13),
       transparent 70%
     ),
     radial-gradient(
       45% 45% at 72% 82%,
-      rgba(51, 65, 85, 0.1),
+      rgba(17, 17, 17, 0.06),
       transparent 70%
     );
 }
@@ -128,9 +129,9 @@ body {
   -webkit-backdrop-filter: saturate(180%) blur(14px);
 }
 /* No escuro: definido FORA de @layer (mesma camada do .glass base) para vencer.
-   Senão a barra de navegação fica clara no modo escuro. */
+   Senão a barra de navegação fica clara no modo escuro. Carvão da marca. */
 html.dark .glass {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(17, 17, 17, 0.82);
 }
 
 /* ---------------------------------------------------------------------------
@@ -141,68 +142,67 @@ html.dark .glass {
    --------------------------------------------------------------------------- */
 @layer utilities {
 html.dark body {
-  background-color: #0b1120; /* fundo geral escuro (slate-950+) */
-  color: #e2e8f0;
+  background-color: #111111; /* CARVÃO da marca */
+  color: #e8e6e1;
 }
-/* No escuro, o TÍTULO em gradiente precisa de tons claros para ser legível
-   (o gradiente normal é grafite escuro, que somem no fundo escuro).
-   Trata só o texto — os botões .bg-brand continuam com o gradiente escuro. */
+/* No escuro, o TÍTULO em gradiente vira branco→dourado (como no mockup da
+   marca: texto claro com destaque dourado sobre o carvão). */
 html.dark .text-gradient {
   background-image: linear-gradient(
     100deg,
-    #e2e8f0,
-    #f8fafc 40%,
-    #2dd4bf
+    #f3e7cc,
+    #ffffff 42%,
+    #d9bb72
   );
 }
-/* Botões da marca no escuro: teal um pouco mais vivo, texto branco. */
+/* Botões da marca no escuro: dourado vivo, texto carvão. */
 html.dark .bg-brand {
   background-image: none;
-  background-color: #14b8a6;
+  background-color: #c9a55a;
 }
 html.dark .bg-brand:hover {
-  background-color: #2dd4bf; /* no escuro, hover clareia */
+  background-color: #d9bb72; /* no escuro, hover clareia */
 }
 html.dark .ring-brand {
-  background-image: linear-gradient(135deg, #2dd4bf, #14b8a6 45%, #0d9488);
+  background-image: linear-gradient(135deg, #e2c078, #c9a55a 45%, #9a7634);
 }
-/* Fundos brancos / claros → superfícies escuras */
-html.dark .bg-white { background-color: #0f172a !important; }
-html.dark .bg-slate-50 { background-color: #111c33 !important; }
-html.dark .bg-slate-50\/60 { background-color: rgba(17, 28, 51, 0.6) !important; }
-/* Bordas claras → bordas escuras */
-html.dark .border-slate-200 { border-color: #1e293b !important; }
-html.dark .border-slate-300 { border-color: #334155 !important; }
+/* Fundos brancos / claros → superfícies carvão (tons quentes) */
+html.dark .bg-white { background-color: #1a1714 !important; }
+html.dark .bg-slate-50 { background-color: #15120f !important; }
+html.dark .bg-slate-50\/60 { background-color: rgba(21, 18, 15, 0.6) !important; }
+/* Bordas claras → bordas carvão */
+html.dark .border-slate-200 { border-color: #2a2620 !important; }
+html.dark .border-slate-300 { border-color: #3a352c !important; }
 html.dark .border-white\/60,
-html.dark .border-white\/70 { border-color: rgba(148, 163, 184, 0.15) !important; }
-/* Textos escuros → claros */
-html.dark .text-slate-900 { color: #f1f5f9 !important; }
-html.dark .text-slate-800 { color: #e2e8f0 !important; }
-html.dark .text-slate-700 { color: #cbd5e1 !important; }
-html.dark .text-slate-600 { color: #cbd5e1 !important; }
-html.dark .text-slate-500 { color: #94a3b8 !important; }
-html.dark .text-slate-400 { color: #94a3b8 !important; } /* clientes, legendas — antes sumiam */
-html.dark .text-slate-300 { color: #cbd5e1 !important; }
+html.dark .border-white\/70 { border-color: rgba(201, 165, 90, 0.18) !important; }
+/* Textos escuros → claros (cinza claro da marca) */
+html.dark .text-slate-900 { color: #f5f3ee !important; }
+html.dark .text-slate-800 { color: #ebe7df !important; }
+html.dark .text-slate-700 { color: #d4cdbf !important; }
+html.dark .text-slate-600 { color: #cfc8ba !important; }
+html.dark .text-slate-500 { color: #a89f8c !important; }
+html.dark .text-slate-400 { color: #a89f8c !important; } /* clientes, legendas */
+html.dark .text-slate-300 { color: #cfc8ba !important; }
 /* Botão de tema (sol/lua) e seletor de idioma: superfícies claras → escuras */
-html.dark .bg-white\/60 { background-color: rgba(30, 41, 59, 0.6) !important; }
-html.dark .bg-white\/70 { background-color: rgba(30, 41, 59, 0.7) !important; }
+html.dark .bg-white\/60 { background-color: rgba(42, 38, 32, 0.6) !important; }
+html.dark .bg-white\/70 { background-color: rgba(42, 38, 32, 0.7) !important; }
 /* Inputs e vidro */
 html.dark input,
-html.dark textarea { background-color: #0f172a !important; color: #e2e8f0 !important; }
+html.dark textarea { background-color: #1a1714 !important; color: #e8e6e1 !important; }
 /* Conteúdo rico no escuro */
-html.dark .richtext { color: #cbd5e1; }
+html.dark .richtext { color: #d4cdbf; }
 html.dark .richtext h1,
 html.dark .richtext h2,
 html.dark .richtext h3,
-html.dark .richtext h4 { color: #f1f5f9; }
-html.dark .richtext code { background: #1e293b; }
-html.dark .richtext th { background: #1e293b; color: #f1f5f9; }
+html.dark .richtext h4 { color: #f5f3ee; }
+html.dark .richtext code { background: #2a2620; }
+html.dark .richtext th { background: #2a2620; color: #f5f3ee; }
 html.dark .richtext th,
-html.dark .richtext td { border-color: #334155; }
-html.dark .richtext tr:nth-child(even) td { background: #0f172a; }
-html.dark .richtext a { color: #2dd4bf; }
+html.dark .richtext td { border-color: #3a352c; }
+html.dark .richtext tr:nth-child(even) td { background: #1a1714; }
+html.dark .richtext a { color: #d9bb72; }
 /* Grade de fundo do hero: linhas claras no modo escuro */
-html.dark .hero-grid { color: #cbd5e1 !important; }
+html.dark .hero-grid { color: #cfc8ba !important; }
 } /* fim @layer utilities (modo escuro) */
 
 /* ---------------------------------------------------------------------------
@@ -243,13 +243,13 @@ html.dark .hero-grid { color: #cbd5e1 !important; }
   margin-top: 1.75rem;
 }
 .richtext a {
-  color: #0f766e; /* accent-700 (teal escuro, legível em fundo branco) */
-  font-weight: 500;
+  color: #8a6d33; /* dourado profundo (accent-700) — legível em fundo branco */
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .richtext a:hover {
-  color: #115e59;
+  color: #6b5427;
 }
 .richtext ul,
 .richtext ol {

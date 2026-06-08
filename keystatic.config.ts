@@ -45,11 +45,11 @@ const richBody = (label: string) =>
   });
 
 const GRADIENTS = [
-  { label: "Teal → Esmeralda", value: "linear-gradient(135deg,#0d9488,#0f766e 45%,#065f46)" },
-  { label: "Teal → Ciano", value: "linear-gradient(135deg,#14b8a6,#0d9488 45%,#0e7490)" },
-  { label: "Teal escuro → Azul", value: "linear-gradient(135deg,#0f766e,#115e59 45%,#155e75)" },
-  { label: "Esmeralda → Teal", value: "linear-gradient(135deg,#10b981,#0d9488 45%,#0f766e)" },
-  { label: "Grafite → Teal", value: "linear-gradient(135deg,#1e293b,#134e4a 50%,#0d9488)" },
+  { label: "Dourado → Bronze", value: "linear-gradient(135deg,#c9a55a,#9a7634 45%,#6b5427)" },
+  { label: "Dourado → Carvão", value: "linear-gradient(135deg,#c9a55a,#8a6d33 45%,#1a1714)" },
+  { label: "Carvão → Dourado", value: "linear-gradient(135deg,#1a1714,#3a352c 50%,#c9a55a)" },
+  { label: "Dourado claro → Dourado", value: "linear-gradient(135deg,#e2c078,#c9a55a 45%,#9a7634)" },
+  { label: "Bronze → Carvão", value: "linear-gradient(135deg,#9a7634,#6b5427 45%,#111111)" },
 ] as const;
 
 // Em produção (VPS) usamos o GitHub como storage — é assim que o editor
