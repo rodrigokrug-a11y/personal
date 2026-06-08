@@ -189,20 +189,24 @@ html.dark .bg-white\/70 { background-color: rgba(42, 38, 32, 0.7) !important; }
 /* Inputs e vidro */
 html.dark input,
 html.dark textarea { background-color: #1a1714 !important; color: #e8e6e1 !important; }
-/* Conteúdo rico no escuro */
-html.dark .richtext { color: #d4cdbf; }
-html.dark .richtext h1,
-html.dark .richtext h2,
-html.dark .richtext h3,
-html.dark .richtext h4 { color: #f5f3ee; }
-html.dark .richtext code { background: #2a2620; }
-html.dark .richtext th { background: #2a2620; color: #f5f3ee; }
-html.dark .richtext th,
-html.dark .richtext td { border-color: #3a352c; }
-html.dark .richtext tr:nth-child(even) td { background: #1a1714; }
-html.dark .richtext a { color: #d9bb72; }
+/* Os overrides escuros do .richtext ficam FORA de @layer (ver fim do arquivo):
+   os estilos base do .richtext também são unlayered e venceriam regras em @layer. */
 /* Grade de fundo do hero: linhas claras no modo escuro */
 html.dark .hero-grid { color: #cfc8ba !important; }
+/* Texto DOURADO: no escuro o dourado profundo (accent-600/700) some no carvão.
+   Clareamos para um dourado vivo que lê bem sobre fundo escuro. */
+html.dark .text-accent-500,
+html.dark .text-accent-600,
+html.dark .text-accent-700 { color: #d9bb72 !important; }
+html.dark .hover\:text-accent-600:hover { color: #e2c078 !important; }
+html.dark .group:hover .group-hover\:text-accent-600 { color: #e2c078 !important; }
+/* Badges que ficam em "fundo claro" → superfície escura no escuro, para o
+   dourado claro continuar legível (selos de Destaque, eyebrow do hero). */
+html.dark .bg-white\/90 { background-color: rgba(26, 23, 20, 0.9) !important; }
+html.dark .bg-accent-50\/70 { background-color: rgba(201, 165, 90, 0.14) !important; }
+/* Botão BRANCO dentro da faixa dourada (.bg-brand, ex.: CTA "Vamos construir")
+   precisa continuar branco no escuro — senão vira carvão sobre carvão. */
+html.dark .bg-brand .bg-white { background-color: #ffffff !important; }
 } /* fim @layer utilities (modo escuro) */
 
 /* ---------------------------------------------------------------------------
@@ -384,4 +388,48 @@ html.dark .hero-grid { color: #cfc8ba !important; }
   .animate-float-slow {
     animation: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   MODO ESCURO — conteúdo rico (.richtext)
+   FORA de @layer de propósito: os estilos base do .richtext acima também são
+   unlayered; se estes overrides ficassem em @layer, perderiam para a base e o
+   texto de projetos/artigos ficaria escuro sobre escuro. Aqui o seletor
+   html.dark vence por especificidade.
+   --------------------------------------------------------------------------- */
+html.dark .richtext {
+  color: #d4cdbf;
+}
+html.dark .richtext h1,
+html.dark .richtext h2,
+html.dark .richtext h3,
+html.dark .richtext h4 {
+  color: #f5f3ee;
+}
+html.dark .richtext blockquote {
+  color: #b8b0a0;
+}
+html.dark .richtext code {
+  background: #2a2620;
+}
+html.dark .richtext pre {
+  background: #0d0c0a;
+}
+html.dark .richtext th {
+  background: #2a2620;
+  color: #f5f3ee;
+}
+html.dark .richtext th,
+html.dark .richtext td {
+  border-color: #3a352c;
+}
+html.dark .richtext tr:nth-child(even) td {
+  background: #1a1714;
+}
+html.dark .richtext img,
+html.dark .richtext hr {
+  border-color: #3a352c;
+}
+html.dark .richtext a {
+  color: #d9bb72;
 }
