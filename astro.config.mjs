@@ -33,6 +33,11 @@ export default defineConfig({
   // Domínio final do site (usado em URLs absolutas, sitemap, Open Graph).
   site: "https://rodrigokrug.com.br",
 
+  // Diretório de saída. Padrão "./dist". No VPS, o deploy builda para um
+  // diretório de staging (OUT_DIR=dist-staging) e só troca pelo "dist" ao
+  // final — deploy atômico, sem janela de site fora do ar durante o rebuild.
+  outDir: process.env.OUT_DIR || "./dist",
+
   // Servidor por padrão (permite /importar e admin web). STATIC=1 → estático.
   output: isServer ? "server" : "static",
   ...(isServer ? { adapter: node({ mode: "standalone" }) } : {}),
