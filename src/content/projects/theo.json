@@ -3,7 +3,7 @@
   "order": 5,
   "year": "2025–2026",
   "featured": false,
-  "gradient": "linear-gradient(135deg,#c9a55a,#8a6d33 45%,#1a1714)",
+  "gradient": "linear-gradient(135deg,#0abfae,#019b8d 45%,#1d2021)",
   "image": "/images/projects/theo/image.png",
   "tagline": {
     "pt": "Ferramentas internas em minutos, sem programar.",

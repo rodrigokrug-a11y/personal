@@ -3,7 +3,7 @@
   "order": 1,
   "year": "2026",
   "featured": true,
-  "gradient": "linear-gradient(135deg,#c9a55a,#9a7634 45%,#6b5427)",
+  "gradient": "linear-gradient(135deg,#0abfae,#047c71 45%,#0c4f48)",
   "image": "/images/projects/my-mini-case/image.png",
   "tagline": {
     "pt": "Proteção sob medida para miniaturas, gerada em segundos.",

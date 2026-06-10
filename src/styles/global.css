@@ -9,31 +9,32 @@
    Tema (Tailwind v4 — configuração via CSS)
    --------------------------------------------------------------------------- */
 @theme {
-  /* Marca R. Krug — tipografia Montserrat (SemiBold + Regular). */
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+  /* Marca R. Krug (estilo Logitech) — Poppins p/ títulos (geométrica
+     arredondada) + DM Sans p/ texto corrido. */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     sans-serif;
-  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Cor de destaque ("accent") — usada em links, ícones, foco, hover.
-     Paleta da marca R. Krug: DOURADO (#C9A55A). Escala centrada no 500. */
-  --color-accent-50: #fbf7ef;
-  --color-accent-100: #f5ead3;
-  --color-accent-200: #ead4a6;
-  --color-accent-300: #ddbc73;
-  --color-accent-400: #d2ac5e;
-  --color-accent-500: #c9a55a; /* DOURADO da marca */
-  --color-accent-600: #b08c42;
-  --color-accent-700: #8a6d33; /* dourado profundo — links/texto sobre claro */
-  --color-accent-800: #6b5427;
-  --color-accent-900: #4d3d1e;
+     Paleta da marca: TURQUESA (#0ABFAE, inspiração Logitech). */
+  --color-accent-50: #effcfa;
+  --color-accent-100: #c8f7f0;
+  --color-accent-200: #97efe3;
+  --color-accent-300: #5ce2d2;
+  --color-accent-400: #2dd2c0;
+  --color-accent-500: #0abfae; /* TURQUESA da marca */
+  --color-accent-600: #019b8d;
+  --color-accent-700: #047c71; /* turquesa profundo — links/texto sobre claro */
+  --color-accent-800: #086158;
+  --color-accent-900: #0c4f48;
 }
 
 :root {
-  /* Gradiente da marca (dourado). Mude estas 3 cores para reestilizar o site.
-     Paleta R. Krug: Dourado #C9A55A / Carvão #111111 / Cinza claro #F2F2F2. */
-  --brand-1: #e2c078; /* dourado claro */
-  --brand-2: #c9a55a; /* dourado da marca */
-  --brand-3: #9a7634; /* dourado profundo */
+  /* Gradiente da marca (turquesa). Mude estas 3 cores para reestilizar o site.
+     Paleta: Turquesa #0ABFAE / Grafite #1D2021 / Branco. */
+  --brand-1: #2dd2c0; /* turquesa claro */
+  --brand-2: #0abfae; /* turquesa da marca */
+  --brand-3: #047c71; /* turquesa profundo */
 }
 
 /* ---------------------------------------------------------------------------
@@ -54,7 +55,7 @@ body {
 }
 
 ::selection {
-  background: rgba(201, 165, 90, 0.3); /* dourado da marca */
+  background: rgba(10, 191, 174, 0.28); /* turquesa da marca */
 }
 
 /* ---------------------------------------------------------------------------
@@ -64,32 +65,32 @@ body {
   font-family: var(--font-display);
 }
 
-/* Texto com preenchimento em gradiente dourado. No claro usa tons profundos
-   (legível sobre branco em títulos grandes); no escuro vira branco→dourado. */
+/* Texto com preenchimento em gradiente turquesa. No claro usa tons profundos
+   (legível sobre branco em títulos grandes); no escuro vira branco→turquesa. */
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    #b08c42,
-    #8a6d33 45%,
-    #c9a55a
+    #019b8d,
+    #047c71 45%,
+    #0abfae
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Botões / superfícies de AÇÃO: DOURADO sólido com texto CARVÃO (#111).
-   Dourado claro pede texto escuro — contraste ~9:1, visual premium da marca. */
+/* Botões / superfícies de AÇÃO: TURQUESA sólido com texto GRAFITE.
+   Turquesa vibrante pede texto escuro — contraste ~8:1, visual Logitech. */
 .bg-brand {
   background-image: none;
-  background-color: #c9a55a;
+  background-color: #0abfae;
 }
 .bg-brand,
 .bg-brand * {
-  color: #111111 !important; /* carvão — ótimo contraste sobre o dourado */
+  color: #0e201d !important; /* grafite — ótimo contraste sobre o turquesa */
 }
 .bg-brand:hover {
-  background-color: #d4b46e; /* hover: dourado um tom mais claro */
+  background-color: #2dd2c0; /* hover: turquesa um tom mais claro */
 }
 
 /* Borda em gradiente (usada nos cards/anel da foto) */
@@ -102,22 +103,22 @@ body {
   );
 }
 
-/* Fundo "mesh" suave com manchas douradas + carvão */
+/* Fundo "mesh" suave com manchas turquesa + grafite */
 .mesh-bg {
   background-image:
     radial-gradient(
       42% 42% at 18% 18%,
-      rgba(201, 165, 90, 0.16),
+      rgba(10, 191, 174, 0.14),
       transparent 70%
     ),
     radial-gradient(
       38% 38% at 82% 8%,
-      rgba(226, 192, 120, 0.13),
+      rgba(45, 210, 192, 0.12),
       transparent 70%
     ),
     radial-gradient(
       45% 45% at 72% 82%,
-      rgba(17, 17, 17, 0.06),
+      rgba(29, 32, 33, 0.07),
       transparent 70%
     );
 }
@@ -129,9 +130,9 @@ body {
   -webkit-backdrop-filter: saturate(180%) blur(14px);
 }
 /* No escuro: definido FORA de @layer (mesma camada do .glass base) para vencer.
-   Senão a barra de navegação fica clara no modo escuro. Carvão da marca. */
+   Senão a barra de navegação fica clara no modo escuro. Grafite da marca. */
 html.dark .glass {
-  background: rgba(17, 17, 17, 0.82);
+  background: rgba(20, 22, 23, 0.82);
 }
 
 /* ---------------------------------------------------------------------------
@@ -142,70 +143,70 @@ html.dark .glass {
    --------------------------------------------------------------------------- */
 @layer utilities {
 html.dark body {
-  background-color: #111111; /* CARVÃO da marca */
-  color: #e8e6e1;
+  background-color: #141617; /* GRAFITE da marca (frio, estilo Logitech) */
+  color: #e7ecec;
 }
-/* No escuro, o TÍTULO em gradiente vira branco→dourado (como no mockup da
-   marca: texto claro com destaque dourado sobre o carvão). */
+/* No escuro, o TÍTULO em gradiente vira branco→turquesa (texto claro com
+   destaque turquesa sobre o grafite, como na embalagem de referência). */
 html.dark .text-gradient {
   background-image: linear-gradient(
     100deg,
-    #f3e7cc,
+    #d4faf5,
     #ffffff 42%,
-    #d9bb72
+    #2dd2c0
   );
 }
-/* Botões da marca no escuro: dourado vivo, texto carvão. */
+/* Botões da marca no escuro: turquesa vivo, texto grafite. */
 html.dark .bg-brand {
   background-image: none;
-  background-color: #c9a55a;
+  background-color: #0fc9b7;
 }
 html.dark .bg-brand:hover {
-  background-color: #d9bb72; /* no escuro, hover clareia */
+  background-color: #2dd2c0; /* no escuro, hover clareia */
 }
 html.dark .ring-brand {
-  background-image: linear-gradient(135deg, #e2c078, #c9a55a 45%, #9a7634);
+  background-image: linear-gradient(135deg, #5ce2d2, #0abfae 45%, #047c71);
 }
-/* Fundos brancos / claros → superfícies carvão (tons quentes) */
-html.dark .bg-white { background-color: #1a1714 !important; }
-html.dark .bg-slate-50 { background-color: #15120f !important; }
-html.dark .bg-slate-50\/60 { background-color: rgba(21, 18, 15, 0.6) !important; }
-/* Bordas claras → bordas carvão */
-html.dark .border-slate-200 { border-color: #2a2620 !important; }
-html.dark .border-slate-300 { border-color: #3a352c !important; }
+/* Fundos brancos / claros → superfícies grafite (tons frios) */
+html.dark .bg-white { background-color: #1d2021 !important; }
+html.dark .bg-slate-50 { background-color: #17191a !important; }
+html.dark .bg-slate-50\/60 { background-color: rgba(23, 25, 26, 0.6) !important; }
+/* Bordas claras → bordas grafite */
+html.dark .border-slate-200 { border-color: #2b2f30 !important; }
+html.dark .border-slate-300 { border-color: #3a4042 !important; }
 html.dark .border-white\/60,
-html.dark .border-white\/70 { border-color: rgba(201, 165, 90, 0.18) !important; }
-/* Textos escuros → claros (cinza claro da marca) */
-html.dark .text-slate-900 { color: #f5f3ee !important; }
-html.dark .text-slate-800 { color: #ebe7df !important; }
-html.dark .text-slate-700 { color: #d4cdbf !important; }
-html.dark .text-slate-600 { color: #cfc8ba !important; }
-html.dark .text-slate-500 { color: #a89f8c !important; }
-html.dark .text-slate-400 { color: #a89f8c !important; } /* clientes, legendas */
-html.dark .text-slate-300 { color: #cfc8ba !important; }
+html.dark .border-white\/70 { border-color: rgba(10, 191, 174, 0.2) !important; }
+/* Textos escuros → claros (cinza frio) */
+html.dark .text-slate-900 { color: #f2f5f4 !important; }
+html.dark .text-slate-800 { color: #e6ebea !important; }
+html.dark .text-slate-700 { color: #c8d0ce !important; }
+html.dark .text-slate-600 { color: #c2cbc9 !important; }
+html.dark .text-slate-500 { color: #93a09d !important; }
+html.dark .text-slate-400 { color: #93a09d !important; } /* clientes, legendas */
+html.dark .text-slate-300 { color: #c2cbc9 !important; }
 /* Botão de tema (sol/lua) e seletor de idioma: superfícies claras → escuras */
-html.dark .bg-white\/60 { background-color: rgba(42, 38, 32, 0.6) !important; }
-html.dark .bg-white\/70 { background-color: rgba(42, 38, 32, 0.7) !important; }
+html.dark .bg-white\/60 { background-color: rgba(38, 42, 43, 0.6) !important; }
+html.dark .bg-white\/70 { background-color: rgba(38, 42, 43, 0.7) !important; }
 /* Inputs e vidro */
 html.dark input,
-html.dark textarea { background-color: #1a1714 !important; color: #e8e6e1 !important; }
+html.dark textarea { background-color: #1d2021 !important; color: #e7ecec !important; }
 /* Os overrides escuros do .richtext ficam FORA de @layer (ver fim do arquivo):
    os estilos base do .richtext também são unlayered e venceriam regras em @layer. */
 /* Grade de fundo do hero: linhas claras no modo escuro */
 html.dark .hero-grid { color: #cfc8ba !important; }
-/* Texto DOURADO: no escuro o dourado profundo (accent-600/700) some no carvão.
-   Clareamos para um dourado vivo que lê bem sobre fundo escuro. */
+/* Texto TURQUESA: no escuro o turquesa profundo (accent-600/700) some no
+   grafite. Clareamos para um turquesa vivo que lê bem sobre fundo escuro. */
 html.dark .text-accent-500,
 html.dark .text-accent-600,
-html.dark .text-accent-700 { color: #d9bb72 !important; }
-html.dark .hover\:text-accent-600:hover { color: #e2c078 !important; }
-html.dark .group:hover .group-hover\:text-accent-600 { color: #e2c078 !important; }
+html.dark .text-accent-700 { color: #3bd3c2 !important; }
+html.dark .hover\:text-accent-600:hover { color: #5ce2d2 !important; }
+html.dark .group:hover .group-hover\:text-accent-600 { color: #5ce2d2 !important; }
 /* Badges que ficam em "fundo claro" → superfície escura no escuro, para o
-   dourado claro continuar legível (selos de Destaque, eyebrow do hero). */
-html.dark .bg-white\/90 { background-color: rgba(26, 23, 20, 0.9) !important; }
-html.dark .bg-accent-50\/70 { background-color: rgba(201, 165, 90, 0.14) !important; }
-/* Botão BRANCO dentro da faixa dourada (.bg-brand, ex.: CTA "Vamos construir")
-   precisa continuar branco no escuro — senão vira carvão sobre carvão. */
+   turquesa claro continuar legível (selos de Destaque, eyebrow do hero). */
+html.dark .bg-white\/90 { background-color: rgba(29, 32, 33, 0.9) !important; }
+html.dark .bg-accent-50\/70 { background-color: rgba(10, 191, 174, 0.14) !important; }
+/* Botão BRANCO dentro da faixa turquesa (.bg-brand, ex.: CTA "Vamos construir")
+   precisa continuar branco no escuro — senão vira grafite sobre grafite. */
 html.dark .bg-brand .bg-white { background-color: #ffffff !important; }
 } /* fim @layer utilities (modo escuro) */
 
@@ -247,13 +248,13 @@ html.dark .bg-brand .bg-white { background-color: #ffffff !important; }
   margin-top: 1.75rem;
 }
 .richtext a {
-  color: #8a6d33; /* dourado profundo (accent-700) — legível em fundo branco */
+  color: #047c71; /* turquesa profundo (accent-700) — legível em fundo branco */
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .richtext a:hover {
-  color: #6b5427;
+  color: #035e55;
 }
 .richtext ul,
 .richtext ol {
@@ -398,38 +399,38 @@ html.dark .bg-brand .bg-white { background-color: #ffffff !important; }
    html.dark vence por especificidade.
    --------------------------------------------------------------------------- */
 html.dark .richtext {
-  color: #d4cdbf;
+  color: #c8d0ce;
 }
 html.dark .richtext h1,
 html.dark .richtext h2,
 html.dark .richtext h3,
 html.dark .richtext h4 {
-  color: #f5f3ee;
+  color: #f2f5f4;
 }
 html.dark .richtext blockquote {
-  color: #b8b0a0;
+  color: #9fb0ac;
 }
 html.dark .richtext code {
-  background: #2a2620;
+  background: #262b2c;
 }
 html.dark .richtext pre {
-  background: #0d0c0a;
+  background: #0d0f0f;
 }
 html.dark .richtext th {
-  background: #2a2620;
-  color: #f5f3ee;
+  background: #262b2c;
+  color: #f2f5f4;
 }
 html.dark .richtext th,
 html.dark .richtext td {
-  border-color: #3a352c;
+  border-color: #343a3b;
 }
 html.dark .richtext tr:nth-child(even) td {
-  background: #1a1714;
+  background: #1d2021;
 }
 html.dark .richtext img,
 html.dark .richtext hr {
-  border-color: #3a352c;
+  border-color: #343a3b;
 }
 html.dark .richtext a {
-  color: #d9bb72;
+  color: #3bd3c2;
 }
