@@ -32,8 +32,10 @@ Gradiente padrão dos cartões: `linear-gradient(135deg,#0ABFAE,#047C71 45%,#0C4
 - `rk-monogram-graphite.svg` — grafite `#1D2021` (usar sobre fundo claro).
 - `rk-monogram-white.svg` — branco (fotos/fundos coloridos escuros).
 - `rk-monogram-black.svg` — preto puro (impressão monocromática).
+- `rk-lockup-dark.svg` — lockup completo vetorial p/ fundo ESCURO.
+- `rk-lockup-light.svg` — lockup completo vetorial p/ fundo CLARO.
 
-### PNG (transparentes)
+### PNG (transparentes, alta resolução)
 - `rk-monogram-teal.png` / `rk-monogram-graphite.png` / `rk-monogram-white.png`
 - `rk-lockup-dark.png` — lockup completo (monograma + R. KRUG + CONSULTORIA)
   para fundo ESCURO (nome branco).
