@@ -19,8 +19,8 @@ const t = useTranslations(lang);
   >
   </div>
 
-  <div class="mx-auto max-w-6xl px-5 pt-36 pb-20 sm:pt-44 sm:pb-28">
-    <div class="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+  <div class="mx-auto max-w-6xl px-5 pt-28 pb-14 sm:pt-44 sm:pb-28">
+    <div class="grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.15fr_0.85fr]">
       <!-- Coluna de texto -->
       <div data-reveal>
         <span
@@ -40,26 +40,26 @@ const t = useTranslations(lang);
           {personal.name} · {personal.role[lang]}
         </p>
         <h1
-          class="font-display mt-3 text-[2.6rem] font-bold leading-[1.03] tracking-tight text-slate-900 sm:text-6xl lg:text-[4.25rem]"
+          class="font-display mt-3 text-[2.1rem] font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl sm:leading-[1.03] lg:text-[4.25rem]"
         >
           <span class="text-gradient">{personal.headline[lang]}</span>
         </h1>
 
-        <p class="mt-7 max-w-xl text-lg leading-relaxed text-slate-600">
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:mt-7 sm:text-lg">
           {personal.intro[lang]}
         </p>
 
-        <div class="mt-10 flex flex-wrap items-center gap-3">
+        <div class="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center">
           <a
             href="#contato"
-            class="bg-brand group inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-semibold text-white shadow-lg shadow-accent-500/25 transition hover:opacity-90"
+            class="bg-brand group inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-4 text-base font-semibold text-white shadow-lg shadow-accent-500/25 transition hover:opacity-90 sm:w-auto"
           >
             {t("nav.cta")}
             <Icon name="arrow" class="h-4 w-4 transition group-hover:translate-x-0.5" />
           </a>
           <a
             href="#projetos"
-            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-7 py-4 text-base font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-white"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-7 py-4 text-base font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-white sm:w-auto"
           >
             {t("hero.cta.primary")}
           </a>
@@ -69,7 +69,7 @@ const t = useTranslations(lang);
       </div>
 
       <!-- Coluna da foto -->
-      <div data-reveal data-reveal-delay="2" class="relative mx-auto w-full max-w-sm">
+      <div data-reveal data-reveal-delay="2" class="relative mx-auto w-full max-w-xs sm:max-w-sm">
         <!-- Blobs decorativos -->
         <div
           class="bg-brand animate-float absolute -left-6 -top-6 h-24 w-24 rounded-3xl opacity-80 blur-2xl"
@@ -93,14 +93,14 @@ const t = useTranslations(lang);
 
           <!-- Cartão flutuante -->
           <div
-            class="glass animate-float-slow absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-2xl border border-white/70 px-4 py-3 shadow-xl"
+            class="glass animate-float-slow absolute -bottom-5 left-1/2 flex max-w-[calc(100%-1rem)] -translate-x-1/2 items-center gap-3 rounded-2xl border border-white/70 px-4 py-3 shadow-xl"
           >
             <span class="bg-brand grid h-9 w-9 place-items-center rounded-lg text-white">
               <Icon name="check" class="h-4 w-4" />
             </span>
             <div class="leading-tight">
               <p class="text-sm font-bold text-slate-900">{personal.stats[0].value}</p>
-              <p class="text-[11px] text-slate-500">{personal.stats[0].label[lang]}</p>
+              <p class="text-xs text-slate-500">{personal.stats[0].label[lang]}</p>
             </div>
           </div>
         </div>

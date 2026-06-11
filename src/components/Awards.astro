@@ -13,7 +13,7 @@ const t = useTranslations(lang);
 
 {
   awards.length > 0 && (
-    <section id="premios" class="relative scroll-mt-20 py-24 sm:py-28">
+    <section id="premios" class="relative scroll-mt-20 py-14 sm:py-24 md:py-28">
       <div class="mx-auto max-w-6xl px-5">
         <SectionHeading
           eyebrow={t("awards.eyebrow")}
@@ -21,7 +21,7 @@ const t = useTranslations(lang);
           subtitle={t("awards.subtitle")}
         />
 
-        <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
           {awards.map((award, i) => (
             <li
               data-reveal

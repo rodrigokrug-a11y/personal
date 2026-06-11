@@ -64,7 +64,7 @@ const creativeWorkLd = {
     <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3.5">
       <a href={homeHref} class="flex items-center gap-2.5">
         <Logo class="h-9 w-auto" alt={personal.name} />
-        <span class="font-display font-bold tracking-tight">{personal.name}</span>
+        <span class="hidden font-display font-bold tracking-tight sm:inline">{personal.name}</span>
       </a>
       <div class="flex items-center gap-4">
         <a
@@ -107,7 +107,7 @@ const creativeWorkLd = {
         <span class="font-medium text-accent-600">{project.year}</span>
         {project.featured && <span>· ★ {t("projects.featured")}</span>}
       </div>
-      <h1 class="font-display mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+      <h1 class="font-display mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
         {project.name}
       </h1>
       <p class="mt-3 text-lg text-slate-600">{project.tagline[lang]}</p>
@@ -141,7 +141,7 @@ const creativeWorkLd = {
     <div class="mt-10 flex flex-wrap items-center gap-2">
       {
         project.tags.map((tag) => (
-          <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-600">
+          <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600">
             {tag}
           </span>
         ))

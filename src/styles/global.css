@@ -328,6 +328,28 @@ html.dark .bg-brand .bg-white { background-color: #ffffff !important; }
   background: #fbfcfe;
 }
 
+/* Conteúdo rico no MOBILE: reduz fontes/hierarquia e padding de código para
+   caber confortavelmente em 375px (vem depois das regras base p/ vencer). */
+@media (max-width: 640px) {
+  .richtext {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .richtext h1 {
+    font-size: 1.5rem;
+  }
+  .richtext h2 {
+    font-size: 1.3rem;
+  }
+  .richtext h3 {
+    font-size: 1.15rem;
+  }
+  .richtext pre {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    Animação de revelação ao rolar (data-reveal)
    --------------------------------------------------------------------------- */

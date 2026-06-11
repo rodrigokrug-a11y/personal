@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="projetos" class="relative scroll-mt-20 bg-slate-50 py-24 sm:py-28">
+<section id="projetos" class="relative scroll-mt-20 bg-slate-50 py-14 sm:py-24 md:py-28">
   <div class="mx-auto max-w-6xl px-5">
     <SectionHeading
       eyebrow={t("projects.eyebrow")}
@@ -19,7 +19,7 @@ const t = useTranslations(lang);
       subtitle={t("projects.subtitle")}
     />
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-10 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((project, i) => <ProjectCard project={project} lang={lang} delay={(i % 3) + 1} />)}
     </div>
   </div>

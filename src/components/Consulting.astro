@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="consultoria" class="relative scroll-mt-20 bg-slate-50 py-24 sm:py-28">
+<section id="consultoria" class="relative scroll-mt-20 bg-slate-50 py-14 sm:py-24 md:py-28">
   <div class="mx-auto max-w-6xl px-5">
     <SectionHeading
       eyebrow={t("consulting.eyebrow")}
@@ -20,7 +20,7 @@ const t = useTranslations(lang);
     />
 
     <!-- Cartões de serviço -->
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-10 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
       {
         services.map((service, i) => (
           <div
@@ -41,7 +41,7 @@ const t = useTranslations(lang);
     <!-- Faixa de chamada para ação -->
     <div
       data-reveal
-      class="bg-brand relative mt-14 overflow-hidden rounded-3xl px-8 py-12 text-center shadow-xl shadow-accent-500/25 sm:px-12 sm:py-14"
+      class="bg-brand relative mt-12 overflow-hidden rounded-3xl px-6 py-10 text-center shadow-xl shadow-accent-500/25 sm:mt-14 sm:px-12 sm:py-14"
     >
       <div
         class="pointer-events-none absolute inset-0 opacity-15"
